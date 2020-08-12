@@ -1,0 +1,60 @@
+.section-padding{
+  padding : 1% 5% 0% 5%;
+}
+
+.heading-main{
+  padding-bottom: 0%;
+  font-size: 30px;
+}
+
+.form-input{
+  padding: 1%;
+}
+
+.logo{
+  height : 8%;
+  margin-left : 5%;
+}
+
+.bg{
+  background-attachment: scroll;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("images/loginBg.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+.form-input{
+  font-family: "montserrat";
+  font-size: 18px;    
+  color: #6b6b6b;
+  font-weight : normal;
+  border-width: 0px 0px 1px 0px;
+  width: 100%;
+  padding : 1% 0% 2% 1%;
+  color: #0E0e10;
+}
+
+.column{
+  float: left;
+  width: 45%;
+}
+
+.name-row:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.button-style{
+  font-family: "montserrat";
+}
