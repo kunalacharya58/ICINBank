@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
     <div class="row">
 
         <div class="col-sm-6">
@@ -27,15 +26,15 @@
             </header>
 
     <section class="section-padding">
-        <form action="">
+        <form [formGroup]="form" (ngSubmit)="submit()" action="POST">
             <div class="form-group">
                 <label for="lemail" class="form-label" >Customer ID</label><br>
-                <input type="text" id="lCustId" class="form-input" >
+                <input type="text" id="lCustId" class="form-input" formControlName="username">
             </div>
 
             <div class="form-group">
                 <label for="lpass" class="form-label" >Password</label><br>
-                <input type="password" id="lpass" class="form-input"    >
+                <input type="password" id="lpass" class="form-input"  formControlName="password"  >
             </div>
             <a href="" class="form-label" style="color:#909090; font-size: 15px;">Forgot Password?</a>
 
@@ -45,6 +44,9 @@
             </div>
 
         </form>
+        <div [hidden]>
+
+        </div>
     </section>
 
     <section class="section-padding">
