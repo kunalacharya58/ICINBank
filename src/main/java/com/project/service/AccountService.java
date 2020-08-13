@@ -1,10 +1,11 @@
 package com.project.service;
 
 import com.project.model.PrimaryAccount;
-import com.project.model.User;
+import com.project.model.SavingsAccount;
 
 public interface AccountService {
 	
-	PrimaryAccount createPrimaryAccount(User user);
+	PrimaryAccount createPrimaryAccount();
+	SavingsAccount createSavingsAccount();
 
 }

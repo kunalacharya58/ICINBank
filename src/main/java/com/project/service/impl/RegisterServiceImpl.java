@@ -9,7 +9,7 @@ import com.project.service.AccountService;
 import com.project.service.RegisterService;
 
 @Service
-public class RegisterServiceImpl implements RegisterService{
+public class RegisterServiceImpl implements RegisterService {
 	
 	@Autowired
 	UserDAO dao;
@@ -23,7 +23,8 @@ public class RegisterServiceImpl implements RegisterService{
 		newUser = dao.save(user);
 		
 		newUser = dao.findByUsername(user.getUsername());
-		newUser.setPrimaryAccount(accountService.createPrimaryAccount(newUser));
+		newUser.setPrimaryAccount(accountService.createPrimaryAccount());
+		newUser.setSavingsAccount(accountService.createSavingsAccount());
 		
 		newUser = dao.save(newUser);
 		

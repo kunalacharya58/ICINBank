@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class PrimaryAccount {
+public class SavingsAccount {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,11 +14,11 @@ public class PrimaryAccount {
 	private long number;
 	private double balance;
 	
-	public PrimaryAccount() {
+	public SavingsAccount() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PrimaryAccount(long number, double balance) {
+	public SavingsAccount(long number, double balance) {
 		super();
 		this.number = number;
 		this.balance = balance;
@@ -47,5 +47,5 @@ public class PrimaryAccount {
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
-	
+
 }
