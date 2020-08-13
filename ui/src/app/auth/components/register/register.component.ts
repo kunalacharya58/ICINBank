@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +12,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
 
   form:FormGroup
-  error =false
+  error = false
   errorMsg = ""
-  constructor(private fb:FormBuilder, private http:HttpClient) {
+  constructor(private fb:FormBuilder, private auth:AuthService, private router:Router) {
     this.form = this.fb.group({
       username: [''],
       firstName: [''],
@@ -25,24 +27,12 @@ export class RegisterComponent implements OnInit {
    }
 
    submit(){
-    console.log(this.form.value)
-    let data = this.form.value
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':'application/json; charset=UTF-8',
-      }),
-      //observe: 'response' as 'response',
-    };
-    if(!(this.form.get('confPass')===this.form.get('password'))){
-      this.error = true
-      this.errorMsg = "Password not same"
-    } else{
-      this.error = false
-      this.errorMsg = ""
-    }
-    this.http.post('http://localhost:8080/register',data,httpOptions).subscribe(
-      (resp) => {console.log(resp)},
-      (err) => {console.log(err.status)}
+    this.auth.register(this.form.value).subscribe(
+      (resp) => { if(resp.ok) this.router.navigate(['/login']) },
+      (err:HttpErrorResponse) => {
+        this.errorMsg = err.headers.get('message');
+        this.error = true
+     }
     )
    }
   ngOnInit(): void {

@@ -44,8 +44,8 @@
             </div>
 
         </form>
-        <div [hidden]>
-
+        <div *ngIf="error" class="alert alert-danger">
+          {{ errorMsg|titlecase }}
         </div>
     </section>
 
