@@ -22,7 +22,7 @@ public class LoginController {
 	MultiValueMap<String, String> map;
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> authenticate(@RequestBody Login cred) {
+	public ResponseEntity<User> authenticate(@RequestBody Login cred) {
 		boolean authenticated = true;
 		boolean allowed = true;
 		User user = null;
@@ -33,7 +33,7 @@ public class LoginController {
 			authenticated = false;
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "username not found");
-			return new ResponseEntity<String>(null, map, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(null, map, HttpStatus.NOT_FOUND);
 		}
 		
 		String userPass = user.getPassword();
@@ -42,15 +42,15 @@ public class LoginController {
 			authenticated = false;
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "invalid password");
-			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
 		if (!user.isEnabled()) {
 			// disabled account login attempt
 			allowed = false;
 			map = new LinkedMultiValueMap<>();
-			map.add("message", "Contact Administrator. Your account is not enabled.");
-			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
+			map.add("message", "your account is not enabled");
+			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
 		if(allowed && authenticated) {
@@ -58,12 +58,12 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("userID", String.valueOf(user.getId()));
 			map.add("message", "user active");
-			return new ResponseEntity<String>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		} else {
 			// authentication failed
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "login failed");
-			return new ResponseEntity<String>(null, map, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<User>(null, map, HttpStatus.NO_CONTENT);
 		}
 	}
 

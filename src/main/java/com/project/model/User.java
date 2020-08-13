@@ -2,11 +2,14 @@ package com.project.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -41,6 +44,9 @@ public class User {
 	
 	//hidden attributes
 	private boolean enabled = true;
+	
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private PrimaryAccount primaryAccount;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -137,6 +143,14 @@ public class User {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	
+	public PrimaryAccount getPrimaryAccount() {
+		return primaryAccount;
+	}
+	
+	public void setPrimaryAccount(PrimaryAccount primaryAccount) {
+		this.primaryAccount = primaryAccount;
 	}
 
 }

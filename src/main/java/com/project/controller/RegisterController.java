@@ -25,30 +25,30 @@ public class RegisterController {
 	MultiValueMap<String, String> map;
 
 	@PostMapping("/register")
-	public ResponseEntity<String> createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = null;
 		map = new LinkedMultiValueMap<>();
 		
 		// check for duplicate email
 		if (userService.getUserByEmail(user.getEmail()) != null) {
 			map.add("message", "email exists");
-			return new ResponseEntity<String>(null, map, HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
 		// check for duplicate user name
 		if (userService.getUserByUsername(user.getUsername()) != null) {
 			map.add("message", "username exists");
-			return new ResponseEntity<String>(null, map, HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
 		// check if the user was successfully registered.
 		newUser = regService.createUser(user);
 		if (newUser == null) {			
 			map.add("message", "registration failed, check fields");
-			return new ResponseEntity<String>(null, map, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<User>(null, map, HttpStatus.BAD_REQUEST);
 		} else {			
 			map.add("message", "success");
-			return new ResponseEntity<String>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(newUser, map, HttpStatus.OK);
 		}
 		
 	}
