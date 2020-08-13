@@ -28,6 +28,7 @@ public class RegisterController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = null;
 		map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
 		
 		// check for duplicate email
 		if (userService.getUserByEmail(user.getEmail()) != null) {
@@ -46,7 +47,7 @@ public class RegisterController {
 		if (newUser == null) {			
 			map.add("message", "registration failed, check fields");
 			return new ResponseEntity<User>(null, map, HttpStatus.BAD_REQUEST);
-		} else {			
+		} else {
 			map.add("message", "success");
 			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		}
