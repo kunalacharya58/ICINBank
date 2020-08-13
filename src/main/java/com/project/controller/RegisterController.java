@@ -31,6 +31,7 @@ public class RegisterController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = null;
 		map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
 		
 		// check for duplicate email
 		if (userService.getUserByEmail(user.getEmail()) != null) {
