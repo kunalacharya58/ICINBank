@@ -25,7 +25,7 @@ public class LoginController {
 	MultiValueMap<String, String> map;
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> authenticate(@RequestBody Login cred) {
+	public ResponseEntity<User> authenticate(@RequestBody Login cred) {
 		boolean authenticated = true;
 		boolean allowed = true;
 		User user = null;

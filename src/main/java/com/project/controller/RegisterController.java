@@ -28,7 +28,7 @@ public class RegisterController {
 	MultiValueMap<String, String> map;
 
 	@PostMapping("/register")
-	public ResponseEntity<String> createUser(@RequestBody User user) {
+	public ResponseEntity<User> createUser(@RequestBody User user) {
 		User newUser = null;
 		map = new LinkedMultiValueMap<>();
 		
