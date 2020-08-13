@@ -2,10 +2,8 @@ package com.project.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,8 +43,11 @@ public class User {
 	//hidden attributes
 	private boolean enabled = true;
 	
-	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne
 	private PrimaryAccount primaryAccount;
+	
+	@OneToOne
+	private SavingsAccount savingsAccount;
 	
 	public User() {
 		// TODO Auto-generated constructor stub
@@ -151,6 +152,14 @@ public class User {
 	
 	public void setPrimaryAccount(PrimaryAccount primaryAccount) {
 		this.primaryAccount = primaryAccount;
+	}
+
+	public SavingsAccount getSavingsAccount() {
+		return savingsAccount;
+	}
+
+	public void setSavingsAccount(SavingsAccount savingsAccount) {
+		this.savingsAccount = savingsAccount;
 	}
 
 }

@@ -48,7 +48,7 @@ public class RegisterController {
 			return new ResponseEntity<User>(null, map, HttpStatus.BAD_REQUEST);
 		} else {			
 			map.add("message", "success");
-			return new ResponseEntity<User>(newUser, map, HttpStatus.OK);
+			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		}
 		
 	}
