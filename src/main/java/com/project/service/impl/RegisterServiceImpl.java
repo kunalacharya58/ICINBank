@@ -23,8 +23,8 @@ public class RegisterServiceImpl implements RegisterService {
 		newUser = dao.save(user);
 		
 		newUser = dao.findByUsername(user.getUsername());
-		newUser.setPrimaryAccount(accountService.createPrimaryAccount());
-		newUser.setSavingsAccount(accountService.createSavingsAccount());
+		newUser.setPrimaryAccount(accountService.createPrimaryAccount(newUser));
+		newUser.setSavingsAccount(accountService.createSavingsAccount(newUser));
 		
 		newUser = dao.save(newUser);
 		

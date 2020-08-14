@@ -10,6 +10,7 @@ import com.project.dao.SavingsAccountDAO;
 import com.project.model.PrimaryAccount;
 import com.project.model.PrimaryTransaction;
 import com.project.model.SavingsAccount;
+import com.project.model.SavingsTransaction;
 import com.project.model.User;
 import com.project.service.AccountService;
 import com.project.service.TransactionService;
@@ -37,10 +38,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public PrimaryAccount createPrimaryAccount() {
+	public PrimaryAccount createPrimaryAccount(User user) {
 		PrimaryAccount primaryAccount = new PrimaryAccount();
 		primaryAccount.setBalance(minimumBalance);
 		primaryAccount.setNumber(nextIdGen());
+		primaryAccount.setUser(user);
 		
 		primaryAccount = primaryAccountDao.save(primaryAccount);
 		
@@ -48,10 +50,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public SavingsAccount createSavingsAccount() {
+	public SavingsAccount createSavingsAccount(User user) {
 		SavingsAccount savingsAccount = new SavingsAccount();
 		savingsAccount.setBalance(minimumBalance);
 		savingsAccount.setNumber(nextIdGen());
+		savingsAccount.setUser(user);
 		
 		savingsAccount = savingsAccountDao.save(savingsAccount);
 		
@@ -63,20 +66,26 @@ public class AccountServiceImpl implements AccountService {
 		User user = userService.getUserById(userId);
 		
 		if(accountType.equalsIgnoreCase("Primary")) {
+			Date date = new Date();
+			
 			PrimaryAccount primaryAccount = user.getPrimaryAccount();
 			primaryAccount.setBalance(primaryAccount.getBalance() + amount);
 			primaryAccountDao.save(primaryAccount);
-			
-			Date date = new Date();
-			
+						
 			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Deposit To Primary Account", "Deposit", amount, primaryAccount.getBalance(), primaryAccount);
 			transactionService.savePrimaryTransaction(primaryTransaction);
 		}
 		
-		if(accountType.equalsIgnoreCase("savings")) {
+		if(accountType.equalsIgnoreCase("Savings")) {
+			Date date = new Date();
 			
-		}
-		
+			SavingsAccount savingsAccount = user.getSavingsAccount();
+			savingsAccount.setBalance(savingsAccount.getBalance() + amount);
+			savingsAccountDao.save(savingsAccount);
+			
+			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Deposit To Savings Account", "Deposit", amount, savingsAccount.getBalance(), savingsAccount);
+			transactionService.saveSavingsTransaction(savingsTransaction);
+		}	
 	}
 
 	@Override
