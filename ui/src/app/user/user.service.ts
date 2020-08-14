@@ -7,7 +7,7 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 export class UserService {
 
   constructor(private http: HttpClient) { }
-  
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json; charset=UTF-8',
@@ -17,7 +17,6 @@ export class UserService {
 
   deposit(data:any){
     let url = 'http://localhost:8080/account/deposit'
-    data = JSON.stringify(data)
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
