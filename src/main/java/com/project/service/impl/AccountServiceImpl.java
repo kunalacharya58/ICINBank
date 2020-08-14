@@ -90,8 +90,29 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public void withdraw(double amount, String accountType, long userId) {
-		// TODO Auto-generated method stub
+		User user = userService.getUserById(userId);
 		
+		if(accountType.equalsIgnoreCase("Primary")) {
+			Date date = new Date();
+			
+			PrimaryAccount primaryAccount = user.getPrimaryAccount();
+			primaryAccount.setBalance(primaryAccount.getBalance() - amount);
+			primaryAccountDao.save(primaryAccount);
+						
+			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Withdraw From Primary Account", "Withdraw", amount, primaryAccount.getBalance(), primaryAccount);
+			transactionService.savePrimaryTransaction(primaryTransaction);
+		}
+		
+		if(accountType.equalsIgnoreCase("Savings")) {
+			Date date = new Date();
+			
+			SavingsAccount savingsAccount = user.getSavingsAccount();
+			savingsAccount.setBalance(savingsAccount.getBalance() - amount);
+			savingsAccountDao.save(savingsAccount);
+			
+			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Withdraw From Savings Account", "Withdraw", amount, savingsAccount.getBalance(), savingsAccount);
+			transactionService.saveSavingsTransaction(savingsTransaction);
+		}
 	}
 
 }
