@@ -42,7 +42,7 @@
                             <label for="" class="edit-label">Username</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Username" disabled>
+                            <input type="text" id="userid" class="form-input" placeholder= "{{userDetails.username}}" disabled>
                         </div>
                     </div>
 
@@ -51,7 +51,7 @@
                             <label for="" class="edit-label">Name</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Name" disabled>
+                            <input type="text" id="name" class="form-input" placeholder= "{{userDetails.firstName}} {{userDetails.lastName}}" disabled>
                         </div>
                     </div>
 
@@ -60,7 +60,10 @@
                             <label for="" class="edit-label">Email Address</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Enter New Email Address">
+                            <input type="text" id="email" class="form-input" placeholder="{{userDetails.email}}" [(ngModel)]= "newEmail" (input)="validateEmail()">
+                            <div class="alert alert-danger error" *ngIf= "emailError.error">
+                            {{emailError.message}}    
+                            </div>
                         </div>
                     </div>
 
@@ -69,7 +72,7 @@
                             <label for="" class="edit-label">Contact Number</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Name" disabled>
+                            <input type="text" id="phone" class="form-input" placeholder="{{userDetails.phone}}" disabled>
                         </div>
                     </div>
 
@@ -78,7 +81,7 @@
                             <label for="" class="edit-label">Date of Birth</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Name" disabled>
+                            <input type="text" id="dob" class="form-input" placeholder="{{userDetails.dob}}" disabled>
                         </div>
                     </div>
 
@@ -87,7 +90,10 @@
                             <label for="" class="edit-label">Address</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Enter New Address">
+                            <input type="text" id="address" class="form-input" placeholder="{{userDetails.address}}" [(ngModel)]= "newAddress" >
+                            <div class="alert alert-danger error" *ngIf= "addressError.error">
+                                {{addressError.message}}    
+                            </div>
                         </div>
                     </div>
 
@@ -96,7 +102,12 @@
                             <label for="" class="edit-label">Password</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Enter New Password">
+                            <input type="password" id="password" class="form-input" placeholder="Enter New Password" [(ngModel)]= "newPassword" (input)="validatePassword()" >
+                        </div>
+                        <div *ngFor="let error of passwordError">
+                            <div class="alert alert-danger error" *ngIf="error.error">
+                                {{error.message}}
+                            </div>
                         </div>
                     </div>
 
@@ -105,12 +116,18 @@
                             <label for="" class="edit-label">Confirm Password</label>
                         </div>
                         <div class="col-sm-8">
-                            <input type="text" id="rUserId" class="form-input" placeholder="Confirm New Password">
+                            <input type="password" id="confPass" class="form-input" placeholder="Confirm New Password" [(ngModel)]= "confPass" (input)="validateConfirmPassword()">
+                            <div class="alert alert-danger error" *ngIf= "confPassError.error">
+                                {{confPassError.message}}    
+                            </div>
                         </div>
                     </div>
                     
                     <div >
-                        <button type="submit" class="button-style" style="margin-left: 40%;">Update Changes</button>                         
+                        <button type="submit" class="button-style" style="margin-left: 40%;" (click)= "validateAndSubmit()">Update Changes</button>                         
+                    </div>
+                    <div class="alert alert-success" id="success" *ngIf= "success.boolean">
+                        {{success.message}}    
                     </div>
                 </section>
 

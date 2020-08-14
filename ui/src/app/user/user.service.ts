@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { User } from '../user';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,17 @@ export class UserService {
     let url = 'http://localhost:8080/account/withdraw'
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
+  }
+
+  getUser():any{
+    let userId = localStorage.getItem('userId')
+    let url = "http://localhost:8080/user/"+userId
+    return this.http.get<User>(url)
+  }
+  
+  updateUser(user){
+    
+    let url = "http://localhost:8080/user/update"
+    return this.http.put(url,user)
   }
 }

@@ -16,7 +16,7 @@ import com.project.service.RegisterService;
 import com.project.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "https://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RegisterController {
 
 	@Autowired
