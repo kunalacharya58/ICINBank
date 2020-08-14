@@ -34,8 +34,8 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-//	@JsonFormat(pattern="dd-MM-yyy")
-//	private LocalDate dob;
+	@JsonFormat(pattern="yyyy-MM-dd")
+	private LocalDate dob;
 	
 	private String address;
 	
@@ -115,13 +115,13 @@ public class User {
 		this.password = password;
 	}
 
-//	public LocalDate getDob() {
-//		return dob;
-//	}
-//
-//	public void setDob(LocalDate dob) {
-//		this.dob = dob;
-//	}
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
 
 	public String getAddress() {
 		return address;
