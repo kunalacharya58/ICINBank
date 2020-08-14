@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import com.project.model.User;
 import com.project.service.LoginService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 	
 	@Autowired
@@ -33,6 +35,7 @@ public class LoginController {
 			authenticated = false;
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "username not found");
+			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.NOT_FOUND);
 		}
 		
@@ -42,6 +45,7 @@ public class LoginController {
 			authenticated = false;
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "invalid password");
+			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
@@ -50,6 +54,7 @@ public class LoginController {
 			allowed = false;
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "Contact Administrator. Your account is not enabled.");
+			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
@@ -58,11 +63,13 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("userID", String.valueOf(user.getId()));
 			map.add("message", "user active");
+			map.add("Access-Control-Expoe-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.OK);
 		} else {
 			// authentication failed
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "login failed");
+			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.NO_CONTENT);
 		}
 	}
