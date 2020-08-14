@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
-import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Component({
   selector: 'app-register',

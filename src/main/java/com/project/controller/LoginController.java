@@ -14,9 +14,8 @@ import com.project.model.Login;
 import com.project.model.User;
 import com.project.service.LoginService;
 
-
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LoginController {
 	
 	@Autowired
@@ -65,6 +64,7 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message, userID");
 			map.add("userID", String.valueOf(user.getId()));
+			map.add("Access-Control-Expose-Headers", "userID");
 			map.add("message", "user active");
 			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<String>(null, map, HttpStatus.OK);

@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+<<<<<<< HEAD
+    "start": "ng serve --port 4201",
+=======
     "start": "ng serve --ssl --ssl-key localhost.key  --ssl-cert localhost.crt",
+>>>>>>> b05e5613d5780673207fac167c10148033a852de
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
