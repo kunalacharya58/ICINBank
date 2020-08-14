@@ -12,3 +12,12 @@
 .heading-main{
   margin-left: 20%;
 }
+
+.error{
+  margin: 1%;
+  padding: 1.5%;
+  padding-right: 0%;
+  padding-left: 4%;
+  border: transparent;
+  border-radius: 50px;
+}

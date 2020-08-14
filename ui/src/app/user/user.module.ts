@@ -12,13 +12,15 @@ import { TransactionComponent } from './components/transaction/transaction.compo
 import { WithdrawComponent } from './components/withdraw/withdraw.component';
 import { BaseComponent } from './components/base/base.component';
 import { ChequeComponent } from './components/cheque/cheque.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [NavbarComponent, HomeComponent, TransferComponent, DepositComponent, ProfileComponent, RegisterComponent, TransactionComponent, WithdrawComponent, BaseComponent, ChequeComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule
   ]
 })
 

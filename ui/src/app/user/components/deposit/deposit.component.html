@@ -2,16 +2,19 @@
   <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 0%;">Deposit</h3>
   <div class="radio">
       <label class="deposit-label" style="font-weight: bold;">Account Type</label>
-      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect" checked>Primary</label>
-      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect">Savings</label>
-
+      <label class="radio-inline deposit-label"><input [(ngModel)]="deposit.accountType" value="Primary" type="radio" name="accountSelect" checked>Primary</label>
+      <label class="radio-inline deposit-label"><input [(ngModel)]="deposit.accountType" value="Savings" type="radio" name="accountSelect" >Savings</label>
+      
     <div>
       <label class="deposit-label" style="font-weight: bold;" for="">Enter Amount </label>
-      <input class="deposit-label" type="number" placeholder="₹ 0.00" >
+      <input [(ngModel)]="deposit.amount" class="deposit-label" type="text" placeholder="₹ 0.00" (keypress)= "numberOnly($event)" >
     </div>
-
+    
     <div style="margin-left: 20%;">
-        <button type="submit" class="button-style button-padding" style="margin-left: 2%;">Submit</button>
+        <button type="submit" class="button-style button-padding" style="margin-left: 2%;" (click)="submit()">Submit</button>
     </div>
+    <div *ngIf="error" class="alert alert-danger error">
+          {{ errorMsg|titlecase }}
+        </div>
   </div>
 </section>
