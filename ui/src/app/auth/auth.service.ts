@@ -29,4 +29,8 @@ export class AuthService {
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
+
+  logout(){
+    localStorage.removeItem('userId')
+  }
 }

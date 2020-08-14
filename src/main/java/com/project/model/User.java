@@ -34,7 +34,7 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@JsonFormat(pattern="dd-MM-yyy")
+	@JsonFormat(pattern="yyyy-MM-dd")
 	private LocalDate dob;
 	
 	private String address;

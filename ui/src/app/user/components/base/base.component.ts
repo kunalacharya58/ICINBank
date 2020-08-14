@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-base',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router, private auth:AuthService) { }
 
   ngOnInit(): void {
+    if(localStorage.getItem('userId') === ''|| localStorage.getItem('userId')===null)
+      this.router.navigate(['login'])
   }
 
+  logout(){
+    this.auth.logout();
+    location.reload()
+  }
 }
