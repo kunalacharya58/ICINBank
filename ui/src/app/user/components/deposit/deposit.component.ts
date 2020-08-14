@@ -17,7 +17,7 @@ export class DepositComponent implements OnInit {
 
   error = false;
   errorMsg = "";
-  
+
   constructor(private user: UserService, private router : Router) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class DepositComponent implements OnInit {
     }
     return true;
   }
-  
+
   submit(){
     console.log(this.deposit);
     this.user.deposit(JSON.stringify(this.deposit)).subscribe(
