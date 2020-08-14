@@ -58,3 +58,13 @@
 .button-style{
   font-family: "montserrat";
 }
+
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color: #6b6b6b;
+  margin-right: 0.5em;
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+  content: "";
+}
