@@ -2,14 +2,17 @@ package com.project.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -43,10 +46,12 @@ public class User {
 	//hidden attributes
 	private boolean enabled = true;
 	
-	@OneToOne
+	@OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private PrimaryAccount primaryAccount;
 	
-	@OneToOne
+	@OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private SavingsAccount savingsAccount;
 	
 	public User() {

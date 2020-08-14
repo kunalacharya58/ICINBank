@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -20,6 +22,10 @@ public class PrimaryAccount {
 	private long id;
 	private long number;
 	private double balance;
+	
+	@OneToOne
+	@JsonBackReference
+	private User user;
 	
 	@OneToMany(mappedBy = "primaryAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonManagedReference
@@ -65,6 +71,14 @@ public class PrimaryAccount {
 
 	public void setPrimaryTransactionList(List<PrimaryTransaction> primaryTransactionList) {
 		this.primaryTransactionList = primaryTransactionList;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 }

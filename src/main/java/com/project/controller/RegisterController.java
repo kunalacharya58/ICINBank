@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.model.User;
+import com.project.service.AccountService;
 import com.project.service.RegisterService;
 import com.project.service.UserService;
 
@@ -21,6 +22,9 @@ public class RegisterController {
 	
 	@Autowired
 	UserService userService;
+	
+	@Autowired
+	AccountService as;
 	
 	MultiValueMap<String, String> map;
 
