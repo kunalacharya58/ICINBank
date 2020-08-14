@@ -20,4 +20,10 @@ export class UserService {
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
+
+  withdraw(data:any){
+    let url = 'http://localhost:8080/account/withdraw'
+    console.log(data)
+    return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
+  }
 }

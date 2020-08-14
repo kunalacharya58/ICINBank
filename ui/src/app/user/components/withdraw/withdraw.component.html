@@ -2,16 +2,22 @@
   <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 0%;">Withdraw</h3>
   <div class="radio">
       <label class="deposit-label" style="font-weight: bold;">Account Type</label>
-      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect" checked>Primary</label>
-      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect">Savings</label>
+      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect" [(ngModel)]="withdraw.accountType" value="Primary">Primary</label>
+      <label class="radio-inline deposit-label"><input type="radio" name="accountSelect" [(ngModel)]="withdraw.accountType" value="Savings">Savings</label>
 
     <div>
       <label class="deposit-label" style="font-weight: bold;" for="">Enter Amount </label>
-      <input class="deposit-label" type="number" placeholder="₹ 0.00" >
+      <input class="deposit-label" type="number" placeholder="₹ 0.00" (keypress)="numberOnly($event)" [(ngModel)]="withdraw.amount">
     </div>
 
     <div style="margin-left: 20%;">
-        <button type="submit" class="button-style button-padding" style="margin-left: 2%; margin-top: 2%;">Submit</button>
+        <button type="submit" class="button-style button-padding" style="margin-left: 2%; margin-top: 2%;" (click)="submit()">Submit</button>
+    </div>
+    <div *ngIf="error" class="col-sm-7 alert alert-danger error text-center">
+      {{ errorMsg|titlecase }}
+    </div>
+    <div *ngIf="success" class="col-sm-7 alert alert-success error text-center">
+      {{ errorMsg|titlecase }}
     </div>
 </div>
 </section>

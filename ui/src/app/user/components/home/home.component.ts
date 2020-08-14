@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AccountService } from '../../account.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ac:AccountService) { }
 
   ngOnInit(): void {
+    console.log(this.ac.getPrimaryBalance().subscribe(
+      (resp) => { console.log(resp) },
+      (err) => { console.log(err) }
+    ))
   }
+
 
 }

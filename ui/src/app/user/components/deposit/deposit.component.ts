@@ -16,7 +16,7 @@ export class DepositComponent implements OnInit {
 
   error = false;
   errorMsg = '';
-
+  success = false;
   constructor(private user: UserService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -29,15 +29,26 @@ export class DepositComponent implements OnInit {
     return true;
   }
 
+
+
   submit() {
     console.log(this.deposit);
     this.user.deposit(JSON.stringify(this.deposit)).subscribe(
       (resp) => {
-        if (resp.ok) this.error = false;
+        if (resp.ok) {
+          this.error = false
+          this.success = true;
+          this.errorMsg = resp.headers.get('message')
+        };
+
       },
       (err: HttpErrorResponse) => {
         this.errorMsg = err.headers.get('message');
         this.error = true;
+        this.success = false;
+        if(err.status === 400){
+          this.errorMsg = "enter complete information";
+        }
       }
     );
   }

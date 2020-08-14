@@ -4,7 +4,7 @@
 }
 
 .logo{
-  height : %;
+  height : 20%;
 }
 
 .nav{
@@ -139,16 +139,7 @@
   margin: 5%;
 }
 
-.column {
-  float: left;
-  width: 40%;
-  padding: 5%;
-  margin: 0% 1% 0% 7%;
-  font-family: "montserrat";
-  font-weight: bold;
-  background-color: #212121;
-  color: #bfbfbf;
-}
+
 
 /* Clear floats after the columns */
 .row:after {
@@ -156,4 +147,20 @@
   display: table;
   clear: both;
   margin: 0% 1% 0% 2%;
+}
+
+.home-opt{
+  font-size: 25px;
+  background-color: #212121;
+  text-align: center;
+}
+
+.link-style{
+  color:#909090;
+  padding-right: 3%;
+  text-decoration: none;
+}
+
+.link-style a:hover{
+  color: #bfbfbf;
 }
