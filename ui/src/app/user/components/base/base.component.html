@@ -30,12 +30,12 @@
                       </div>
 
                       <ul class="nav navbar-nav">
-                        <li><a href="homePage.html">Home</a></li>
+                        <li><a routerLink='home' routerLinkActive='active'>Home</a></li>
                         <li class="dropdown">
                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Transfer
                           <span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a href="deposit.html">Deposit</a></li>
+                            <li><a routerLink='deposit' routerLinkActive='active'>Deposit</a></li>
                             <li><a href="withdraw.html">Withdraw</a></li>
                             <li><a href="transfer.html">Fund Transfer</a></li>
                           </ul>
@@ -46,7 +46,7 @@
                       </ul>
 
                       <ul class="nav navbar-nav navbar-right">
-                        <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+                        <li><a (click)="logout()" routerLinkActive='active'><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
                       </ul>
                     </div>
                   </nav>
