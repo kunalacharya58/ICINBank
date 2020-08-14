@@ -5,6 +5,8 @@ import { RegisterComponent } from './auth/components/register/register.component
 import { HomeComponent } from './user/components/home/home.component'
 import { DepositComponent } from './user/components/deposit/deposit.component';
 import { BaseComponent } from './user/components/base/base.component';
+import { WithdrawComponent } from './user/components/withdraw/withdraw.component';
+import { ChequeComponent } from './user/components/cheque/cheque.component';
 
 const routes: Routes = [
   { path: "", redirectTo: 'login', pathMatch:'full'},
@@ -12,8 +14,10 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'user', component: BaseComponent, children:[
     { path: "", redirectTo: 'home', pathMatch:'full'},
-    {path: 'home', component: HomeComponent},
-    {path: 'deposit', component: DepositComponent }
+    { path: 'home', component: HomeComponent },
+    { path: 'deposit', component: DepositComponent },
+    { path: 'withdraw', component: WithdrawComponent },
+    { path: 'chequebook', component: ChequeComponent }
   ]},
  ];
 

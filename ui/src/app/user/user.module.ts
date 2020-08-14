@@ -11,10 +11,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { TransactionComponent } from './components/transaction/transaction.component';
 import { WithdrawComponent } from './components/withdraw/withdraw.component';
 import { BaseComponent } from './components/base/base.component';
+import { ChequeComponent } from './components/cheque/cheque.component';
 
 
 @NgModule({
-  declarations: [NavbarComponent, HomeComponent, TransferComponent, DepositComponent, ProfileComponent, RegisterComponent, TransactionComponent, WithdrawComponent, BaseComponent],
+  declarations: [NavbarComponent, HomeComponent, TransferComponent, DepositComponent, ProfileComponent, RegisterComponent, TransactionComponent, WithdrawComponent, BaseComponent, ChequeComponent],
   imports: [
     CommonModule,
     UserRoutingModule
