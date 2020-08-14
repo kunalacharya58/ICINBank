@@ -16,7 +16,7 @@ import com.project.service.RegisterService;
 import com.project.service.UserService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 public class RegisterController {
 
 	@Autowired
@@ -40,14 +40,14 @@ public class RegisterController {
 		if (userService.getUserByEmail(user.getEmail()) != null) {
 			map.add("message", "email exists");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
 		// check for duplicate user name
 		if (userService.getUserByUsername(user.getUsername()) != null) {
 			map.add("message", "username exists");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.CONFLICT);
+			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
 		// check if the user was successfully registered.
@@ -55,11 +55,11 @@ public class RegisterController {
 		if (newUser == null) {			
 			map.add("message", "registration failed, check fields");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<User>(null, map, HttpStatus.BAD_REQUEST);
 		} else {			
 			map.add("message", "success");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(null, map, HttpStatus.OK);
 		}
 		
 	}

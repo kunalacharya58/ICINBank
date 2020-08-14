@@ -15,7 +15,7 @@ import com.project.model.User;
 import com.project.service.LoginService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://localhost:4200")
 public class LoginController {
 	
 	@Autowired
@@ -36,7 +36,7 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "username not found");
-			return new ResponseEntity<String>(null, map, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<User>(null, map, HttpStatus.NOT_FOUND);
 		}
 		
 		String userPass = user.getPassword();
@@ -47,7 +47,7 @@ public class LoginController {
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "invalid password");
 
-			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
 		if (!user.isEnabled()) {
@@ -56,7 +56,7 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("message", "Contact Administrator. Your account is not enabled.");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
 		if(allowed && authenticated) {
@@ -67,14 +67,14 @@ public class LoginController {
 			map.add("Access-Control-Expose-Headers", "userID");
 			map.add("message", "user active");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(null, map, HttpStatus.OK);
 		} else {
 			// authentication failed
 			map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "login failed");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<String>(null, map, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<User>(null, map, HttpStatus.NO_CONTENT);
 		}
 	}
 

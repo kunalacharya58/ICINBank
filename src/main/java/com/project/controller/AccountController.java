@@ -37,7 +37,7 @@ public class AccountController {
 		map.add("message", "success");
 		map.add("Access-Control-Expose-Headers", "message");
 		
-		return new ResponseEntity<>(map, HttpStatus.OK);
+		return new ResponseEntity<String>(map, HttpStatus.OK);
 	}
 
 	@PostMapping("/withdraw")
@@ -52,7 +52,7 @@ public class AccountController {
 			map.add("message", "transaction limit exceeded");
 			map.add("Access-Control-Expose-Headers", "message");
 			
-			return new ResponseEntity<>(map, HttpStatus.FORBIDDEN);
+			return new ResponseEntity<String>(map, HttpStatus.FORBIDDEN);
 		}
 		
 		// balance check, no underflow allowed
@@ -68,7 +68,7 @@ public class AccountController {
 			map.add("message", "insufficient balance");
 			map.add("Access-Control-Expose-Headers", "message");
 			
-			return new ResponseEntity<>(map, HttpStatus.FORBIDDEN);
+			return new ResponseEntity<String>(map, HttpStatus.FORBIDDEN);
 		}
 		
 		// everything goes through smoothly
@@ -77,7 +77,7 @@ public class AccountController {
 		map.add("message", "success");
 		map.add("Access-Control-Expose-Headers", "message");
 		
-		return new ResponseEntity<>(map, HttpStatus.OK);
+		return new ResponseEntity<String>(map, HttpStatus.OK);
 	}
 	
 }
