@@ -27,33 +27,66 @@
             </header>
 
     <section class="section-padding">
-        <form [formGroup]="form" action="POST" (ngSubmit)="submit()">
+        <form [formGroup]="form" action="POST" (ngSubmit)="validateFormAndSubmit()" ngNativeValidate>
             <div class="form-group">
-                <input type="text" formControlName="username" class="form-input" placeholder="Customer ID">
+                <input type="text" formControlName="username" id="username" class="form-input" placeholder="Customer ID" (input)="validateUserName()" required>
+                <div *ngFor="let error of validationErrorMessage.username">
+                    <div class="alert alert-danger error" *ngIf="error.isError">
+                        <p>{{error.message}}</p>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="text" formControlName="firstName" class="form-input" placeholder="First Name">
+                <input type="text" formControlName="firstName" id="firstName" class="form-input" placeholder="First Name" required>
             </div>
 
             <div class="form-group">
-                <input type="text" formControlName="lastName" class="form-input" placeholder="Last Name">
+                <input type="text" formControlName="lastName" id="lastName" class="form-input" placeholder="Last Name" required>
             </div>
 
             <div class="form-group">
-                <input type="email" formControlName="email" class="form-input" placeholder="Email Address">
+                <input type="email" formControlName="email" id="email" class="form-input" placeholder="Email Address" (input)= "validateEmail()" required>
+                <div *ngFor="let error of validationErrorMessage.email">
+                    <div class="alert alert-danger error" *ngIf="error.isError">
+                        <p>{{error.message}}</p>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="number" formControlName="phone" class="form-input" placeholder="Contact Number">
+                <input type="tel" formControlName="phone" id="phone" class="form-input" placeholder="Contact Number" (keypress)= "numberOnly($event)" (input)= "validatePhone()"  required>
+                <div *ngFor="let error of validationErrorMessage.phone">
+                    <div class="alert alert-danger error" *ngIf="error.isError">
+                        <p>{{error.message}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">                    
+                <input type="date" formControlName="dateOfBirth" id="dateOfBirth" class="form-input" placeholder="Date of Birth" required>
+            </div>
+
+            <div class="form-group">                    
+                <input type="text" formControlName="address" id="address" class="form-input" placeholder="Address" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="password" formControlName="password" id="password" class="form-input" placeholder="Password" (input)= "validatePassword()" required>
+                <div *ngFor="let error of validationErrorMessage.password">
+                    <div class="alert alert-danger error" *ngIf="error.isError">
+                        <p>{{error.message}}</p>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <input type="password" formControlName="password" class="form-input" placeholder="Password">
-            </div>
-
-            <div class="form-group">
-                <input type="password" formControlName="confPass" class="form-input" placeholder="Confirm Password">
+                <input type="password" formControlName="confPass" id="confPass" class="form-input" placeholder="Confirm Password" (input)= "validateConfirmPassword()" required>
+                <div *ngFor="let error of validationErrorMessage.confPass">
+                    <div class="alert alert-danger error" *ngIf="error.isError">
+                        <p>{{error.message}}</p>
+                    </div>
+                </div>
             </div>
 
             <div class="button-padding">

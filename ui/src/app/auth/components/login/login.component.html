@@ -26,15 +26,21 @@
             </header>
 
     <section class="section-padding">
-        <form [formGroup]="form" (ngSubmit)="submit()" action="POST">
+        <form [formGroup]="form" (ngSubmit)="validateFormAndSubmit()" action="POST" ngNativeValidate>
             <div class="form-group">
                 <label for="lemail" class="form-label" >Customer ID</label><br>
-                <input type="text" id="lCustId" class="form-input" formControlName="username">
+                <input type="text" id="lCustId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
+                <div class="alert alert-danger error" *ngIf="usernameError">
+                    <p>{{usernameErrorMessage}}</p>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="lpass" class="form-label" >Password</label><br>
-                <input type="password" id="lpass" class="form-input"  formControlName="password"  >
+                <input type="password" id="lpass" class="form-input"  formControlName="password" (input)= "validatePassword()" required  >
+                <div class="alert alert-danger error" *ngIf="passError">
+                    <p>{{passErrorMessage}}</p>
+                </div>
             </div>
             <a href="" class="form-label" style="color:#909090; font-size: 15px;">Forgot Password?</a>
 
