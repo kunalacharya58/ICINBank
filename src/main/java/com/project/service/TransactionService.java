@@ -10,7 +10,7 @@ public interface TransactionService {
 	void savePrimaryTransaction(PrimaryTransaction primaryTransaction);
 	void saveSavingsTransaction(SavingsTransaction savingsTransaction);
 	
-	List<PrimaryTransaction> getPrimaryTransactionList(String username);
-	List<SavingsTransaction> getSavingsTransactionList(String username);
+	List<PrimaryTransaction> getPrimaryTransactionList(long userID);
+	List<SavingsTransaction> getSavingsTransactionList(long userID);
 
 }
