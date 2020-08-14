@@ -15,13 +15,13 @@
 }
 
 .display-balance{        
-    margin: 5%;
+    margin: 2%;
 }
 
 .column {
     float: left;
     width: 40%;
-    padding: 5%;
+    padding: 2% 12% 2% 12%;
     margin: 0% 1% 0% 7%;
     font-family: "montserrat";
     font-weight: bold;
@@ -34,6 +34,10 @@
     content: "";
     display: table;
     clear: both;
-    margin: 0% 1% 0% 2%;
   }
   
+  .home-opt{
+    font-size: 25px;
+     color: #212121;
+     padding: 20%;
+  }
