@@ -16,7 +16,7 @@
     <section class="section-padding">
         <form [formGroup]="form" action="POST" (ngSubmit)="validateFormAndSubmit()" ngNativeValidate>
             <div class="form-group">
-                <input type="text" formControlName="username" id="username" class="form-input" placeholder="Customer ID" (input)="validateUserName()" required>
+                <input type="text" formControlName="username" id="username" class="form-input" placeholder="User ID" (input)="validateUserName()" required>
                 <div *ngFor="let error of validationErrorMessage.username">
                     <div class="alert alert-danger error" *ngIf="error.isError">
                         <p>{{error.message}}</p>
