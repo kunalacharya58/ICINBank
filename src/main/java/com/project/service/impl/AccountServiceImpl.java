@@ -115,4 +115,18 @@ public class AccountServiceImpl implements AccountService {
 		}
 	}
 
+	@Override
+	public PrimaryAccount findPrimaryAccount(long userID) {
+		PrimaryAccount primaryAccount = null;
+		primaryAccount = userService.getUserById(userID).getPrimaryAccount();
+		return primaryAccount;
+	}
+
+	@Override
+	public SavingsAccount findSavingsAccount(long userID) {
+		SavingsAccount savingsAccount = null;
+		savingsAccount = userService.getUserById(userID).getSavingsAccount();
+		return savingsAccount;
+	}
+
 }

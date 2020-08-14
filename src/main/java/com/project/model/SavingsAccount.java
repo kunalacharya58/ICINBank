@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class SavingsAccount {
@@ -28,7 +28,7 @@ public class SavingsAccount {
 	private User user;
 	
 	@OneToMany(mappedBy = "savingsAccount", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JsonManagedReference
+	@JsonIgnore
 	private List<SavingsTransaction> savingsTransactionList;
 	
 	public SavingsAccount() {

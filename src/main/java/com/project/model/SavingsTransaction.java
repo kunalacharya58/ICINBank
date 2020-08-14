@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class SavingsTransaction {
@@ -24,7 +24,7 @@ public class SavingsTransaction {
 	private double availableBalance;
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
 	@JoinColumn(name = "savings_account_id")
 	private SavingsAccount savingsAccount;
 	
