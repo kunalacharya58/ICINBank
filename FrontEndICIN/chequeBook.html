@@ -1,9 +1,82 @@
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap Links -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Custom Stylesheet-->
+        <link rel="stylesheet" type="text/css" href="css/main.css">        
+        <link rel="stylesheet" type="text/css" href="css/homePage.css">        
+        <link rel="stylesheet" type="text/css" href="css/transfer.css">        
+
+        <title>Home</title>  
     </head>
-    <body>
-        <h1>Cheque Book</h1>
 
+    <body>
+        <div class="row">
+            <div class="col-sm-9">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <img src="css/images/croppedlogo.png" alt="logo" class="logo">    
+                      </div>
+
+                      <ul class="nav navbar-nav">
+                        <li><a href="homePage.html">Home</a></li>
+                        <li><a href="transaction.html">Account Transactions</a></li>
+                        <li><a href="transfer.html">Fund Transfer</a></li>
+                        <li><a href="chequeBook.html">Request For Cheque Book</a></li>
+                        <li><a href="profile.html">Profile Settings</a></li>
+                      </ul>
+
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+                  <hr>
+                
+                <section class="section-padding section-padding-deposit">
+                    <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 0%; margin-left: 5%;">Cheque Book Request</h3>                   
+                    <div class="radio">
+                        <label class="deposit-label" style="font-weight: bold; margin-left: 6%;">Account Type</label>
+                        <label class="radio-inline deposit-label"><input type="radio" name="accountSelect" checked>Primary</label>
+                        <label class="radio-inline deposit-label"><input type="radio" name="accountSelect">Savings</label>                    
+                      
+
+                      <div style="margin-left: 20%;">
+                          <button type="submit" class="button-style button-padding" style="margin-left: 2%;">Request</button>
+                      </div>
+                </section>
+
+                <footer class="section-padding footer-font" style="margin-top: 20%;">
+                    <div style="margin-bottom: 2%;">
+                        Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
+                        © 2020 ICIN. All rights reserved.
+                    </div>
+                    
+                    <a href="security.html" class="link-style">Security</a>
+                    <a href="privacyAndCookies.html" class="link-style">Privacy and Cookies</a>
+                    <a href="bankRegulatory.html" class="link-style">Bank Regulatory Information</a>
+                </footer>
+
+            </div>
+            
+            <div class="col-sm-3">
+                <div class="bg">
+
+                </div>
+            </div>
+        </div>
+        
     </body>
 </html>
