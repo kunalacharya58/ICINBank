@@ -35,13 +35,13 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public List<PrimaryTransaction> getPrimaryTransactionList(String username) {
-		return userService.getUserByUsername(username).getPrimaryAccount().getPrimaryTransactionList();
+	public List<PrimaryTransaction> getPrimaryTransactionList(long userID) {
+		return userService.getUserById(userID).getPrimaryAccount().getPrimaryTransactionList();
 	}
 
 	@Override
-	public List<SavingsTransaction> getSavingsTransactionList(String username) {
-		return userService.getUserByUsername(username).getSavingsAccount().getSavingsTransactionList();
+	public List<SavingsTransaction> getSavingsTransactionList(long userID) {
+		return userService.getUserById(userID).getSavingsAccount().getSavingsTransactionList();
 	}
 
 }

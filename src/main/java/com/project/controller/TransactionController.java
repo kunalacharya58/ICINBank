@@ -29,37 +29,37 @@ public class TransactionController {
 	@Autowired
 	TransactionService transactionService;
 	
-	@GetMapping("/primary/{username}")
-	public ResponseEntity<List<PrimaryTransaction>> getAllPrimaryTransactions(@PathVariable String username) {
+	@GetMapping("/primary/{userID}")
+	public ResponseEntity<List<PrimaryTransaction>> getAllPrimaryTransactions(@PathVariable long userID) {
 		List<PrimaryTransaction> primaryTransactionList = null;
 		
 		map = new LinkedMultiValueMap<>();
 		map.add("Access-Control-Expose-Headers", "message");
 		
-		if(userService.getUserByUsername(username) == null) {
-			map.add("message", "username not found");
+		if(userService.getUserById(userID) == null) {
+			map.add("message", "user not found");
 			return new ResponseEntity<List<PrimaryTransaction>>(null, map, HttpStatus.NOT_FOUND);
 		}
 		
-		primaryTransactionList = transactionService.getPrimaryTransactionList(username);
+		primaryTransactionList = transactionService.getPrimaryTransactionList(userID);
 		map.add("message", "success");
 		
 		return new ResponseEntity<List<PrimaryTransaction>>(primaryTransactionList, map, HttpStatus.OK);
 	}
 	
-	@GetMapping("/savings/{username}")
-	public ResponseEntity<List<SavingsTransaction>> getAllSavingsTransactions(@PathVariable String username) {
+	@GetMapping("/savings/{userID}")
+	public ResponseEntity<List<SavingsTransaction>> getAllSavingsTransactions(@PathVariable long userID) {
 		List<SavingsTransaction> savingsTransactionList = null;
 		
 		map = new LinkedMultiValueMap<>();
 		map.add("Access-Control-Expose-Headers", "message");
 		
-		if(userService.getUserByUsername(username) == null) {
-			map.add("message", "username not found");
+		if(userService.getUserById(userID) == null) {
+			map.add("message", "user not found");
 			return new ResponseEntity<List<SavingsTransaction>>(null, map, HttpStatus.NOT_FOUND);
 		}
 		
-		savingsTransactionList = transactionService.getSavingsTransactionList(username);
+		savingsTransactionList = transactionService.getSavingsTransactionList(userID);
 		map.add("message", "success");
 		
 		return new ResponseEntity<List<SavingsTransaction>>(savingsTransactionList, map, HttpStatus.OK);

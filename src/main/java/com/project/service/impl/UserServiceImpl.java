@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserById(long id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id).get();
+		return dao.findById(id).orElse(null);
 	}
 
 	@Override
