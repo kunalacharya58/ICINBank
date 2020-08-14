@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .bg {
     /* The image used */
     background-image: url("../../../../assets/css/images/loginBg.jpg");
@@ -86,3 +87,19 @@
   }
   
   
+=======
+.deposit-label{
+  padding: 2%;
+  font-size: 20px;
+  font-family: "montserrat";
+}
+
+.section-padding-deposit{
+  margin-left :25%;
+  margin-top: 5%;
+}
+
+.heading-main{
+  margin-left: 20%;
+}
+>>>>>>> b05e5613d5780673207fac167c10148033a852de

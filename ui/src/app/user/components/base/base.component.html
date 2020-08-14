@@ -22,18 +22,39 @@
                         <img src="../../../../assets/css/images/croppedlogo.png" alt="logo" class="logo">
                       </div>
 
+<<<<<<< HEAD
                      
                       <ul class="navbar">
                         <li><a href="homePage.html">Home</a></li>
                         <li><a href="transaction.html">Account Transactions</a></li>
                         <li><a href="transfer.html">Fund Transfer</a></li>
                         <li><a href="chequeBook.html">Request For Cheque Book</a></li>
+=======
+                      <ul class="nav navbar-nav">
+                        <li><a routerLink='home' routerLinkActive='active'>Home</a></li>
+                        <li class="dropdown">
+                          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Transfer
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a routerLink='deposit' routerLinkActive='active'>Deposit</a></li>
+                            <li><a routerLink='withdraw' routerLinkActive='active'>Withdraw</a></li>
+                            <li><a href="transfer.html">Fund Transfer</a></li>
+                          </ul>
+                        </li>
+                        <li><a href="transaction.html">Account Transactions</a></li>
+                        <li><a routerLink='chequebook' routerLinkActive='active'>Request For Cheque Book</a></li>
+>>>>>>> b05e5613d5780673207fac167c10148033a852de
                         <li><a href="profile.html">Profile Settings</a></li>
                       </ul>
                     
 
+<<<<<<< HEAD
                       <ul class="navbar navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+=======
+                      <ul class="nav navbar-nav navbar-right">
+                        <li><a (click)="logout()" routerLinkActive='active'><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+>>>>>>> b05e5613d5780673207fac167c10148033a852de
                       </ul>
                     </div>
                   </nav>

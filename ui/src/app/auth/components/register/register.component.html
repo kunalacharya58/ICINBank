@@ -19,7 +19,7 @@
                 <input type="text" formControlName="username" id="username" class="form-input" placeholder="User ID" (input)="validateUserName()" required>
                 <div *ngFor="let error of validationErrorMessage.username">
                     <div class="alert alert-danger error" *ngIf="error.isError">
-                        <p>{{error.message}}</p>
+                        {{error.message}}
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <input type="email" formControlName="email" id="email" class="form-input" placeholder="Email Address" (input)= "validateEmail()" required>
                 <div *ngFor="let error of validationErrorMessage.email">
                     <div class="alert alert-danger error" *ngIf="error.isError">
-                        <p>{{error.message}}</p>
+                        {{error.message}}
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <input type="tel" formControlName="phone" id="phone" class="form-input" placeholder="Contact Number" (keypress)= "numberOnly($event)" (input)= "validatePhone()"  required>
                 <div *ngFor="let error of validationErrorMessage.phone">
                     <div class="alert alert-danger error" *ngIf="error.isError">
-                        <p>{{error.message}}</p>
+                        {{error.message}}
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                 <input type="password" formControlName="password" id="password" class="form-input" placeholder="Password" (input)= "validatePassword()" required>
                 <div *ngFor="let error of validationErrorMessage.password">
                     <div class="alert alert-danger error" *ngIf="error.isError">
-                        <p>{{error.message}}</p>
+                        {{error.message}}
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <input type="password" formControlName="confPass" id="confPass" class="form-input" placeholder="Confirm Password" (input)= "validateConfirmPassword()" required>
                 <div *ngFor="let error of validationErrorMessage.confPass">
                     <div class="alert alert-danger error" *ngIf="error.isError">
-                        <p>{{error.message}}</p>
+                        {{error.message}}
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
             </div>
 
         </form>
-        <div *ngIf="error" class="alert alert-danger">
+        <div *ngIf="error" class="alert alert-danger error">
           {{ errorMsg|titlecase }}
         </div>
     </section>

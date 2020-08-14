@@ -40,6 +40,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+localhost.key
+localhost.crt
+
 
 # System Files
 .DS_Store
