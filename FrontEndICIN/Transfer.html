@@ -44,17 +44,19 @@
                     </div>
                   </nav>
                   <hr>
+                
+                  <section class="section-padding-transfer"  style="margin-left: 27%;">
+                    <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 2%; margin-left: 15%;">Fund Transfer</h3>
 
-                <section class="section-padding-transfer"  style="margin-left: 27%;">
-                    <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 2%; margin-left: 18%;">Fund Transfer</h3> 
+                      <div class="radio">
+                        <label class="transfer-label" style="font-weight: bold;margin-right: 10%;">Account Type</label>
+                        <label class="radio-inline transfer-label"><input type="radio" name="transactionType" value="self">Self</label>
+                        <label class="radio-inline transfer-label" style="padding-left: 60px;"><input type="radio" name="transactionType" value="other">Other</label>
+                    </div>
+
                     
-                    <div class="radio">
-                      <label class="transfer-label" style="font-weight: bold;margin-right: 10%;">Account Type</label>
-                      <label class="radio-inline transfer-label"><input type="radio" name="transactionType" >Self</label>
-                      <label class="radio-inline transfer-label" style="padding-left: 60px;"><input type="radio" name="transactionType">Other</label>
-                  </div>
-
-                    <div>
+                    <div id="form-1" style="display: none">
+                      <div>
                         <label class="transfer-label" style="font-weight: bold; margin-right: 85px;" for="">Bank Name </label>
                         <input class="transfer-label" type="text" placeholder="Enter the Bank Name" >
                     </div>
@@ -88,36 +90,17 @@
                     <div style="margin-left: 10%;">
                       <button type="submit" class="button-style button-padding" style="margin-left: 22%;">Transfer</button>
                   </div>
-                    
 
-                </section>
-                
-                <!-- <section class="display-balance">
-                  <div class="row">
-                    <div class="column" >
-                      <h2 style="font-size: 25px;">Primary Balance</h2>
-                      <p style="font-size: 60px;">₹ 0.00</p>
-                    </div>
-                    <div class="column" >
-                      <h2 style="font-size: 25px;">Savings Balance</h2>
-                      <p style="font-size: 60px;">₹ 0.00</p>
-                    </div>
+                      Company Name: <input type="text" hidden="true"/> 
+                      Designation: <input type="text" hidden="true"/> 
+                      Year_of_Experience: <input type="text" hidden="true"/> 
                   </div>
-                    
-                </section>
 
-                <section class="display-balance">
-                  <div class="row">
-                    <div class="column" style=" background-color: #bfbfbf;">
-                      <a href="deposit.html" class="home-opt">Deposit</a>                    
-                    </div>
-                    <div class="column" style=" background-color: #bfbfbf;">
-                      <a href="withdraw.html" class="home-opt">Withdraw</a>                    
-                    </div>
-                  </div>
-                    
-                </section> -->
-
+                  <div id="form-2" style="display: none">
+                    Company Name: <input type="text" hidden="true"/> 
+                </div>
+                </section>             
+               
                 <footer class="section-padding footer-font" style="margin-top: 20%;">
                     <div style="margin-bottom: 2%;">
                         Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
@@ -137,6 +120,8 @@
                 </div>
             </div>
         </div>
-        
+      
+        <script src="display.js"></script>
+
     </body>
 </html>
