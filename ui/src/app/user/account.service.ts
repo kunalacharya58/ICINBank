@@ -9,7 +9,7 @@ import { JsonPipe } from '@angular/common';
 export class AccountService {
   getSavingsBalance() {
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/savings/"+userId
+    let url = "http://localhost:8080/account/savings/"+userId
     return this.http.get<any>(url)
   }
 
@@ -31,7 +31,7 @@ export class AccountService {
 
   getPrimaryBalance(): any{
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/primary/"+userId
+    let url = "http://localhost:8080/account/primary/"+userId
     return this.http.get<any>(url)
   }
 
@@ -43,7 +43,7 @@ export class AccountService {
       observe: 'response' as 'response',
     };
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/exchange"
+    let url = "http://localhost:8080/account/exchange"
     return this.http.post(url,data,httpOptions)
   }
 

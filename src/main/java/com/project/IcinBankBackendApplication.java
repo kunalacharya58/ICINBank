@@ -21,7 +21,7 @@ public class IcinBankBackendApplication  {
 	public static void main(String[] args) {
 		SpringApplication.run(IcinBankBackendApplication.class, args);
 	}
-	
+}	
 //	@Autowired
 //	RegisterService regServ;
 //	

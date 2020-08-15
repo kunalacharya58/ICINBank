@@ -22,6 +22,7 @@ import com.project.service.UserService;
 
 @RestController
 @CrossOrigin(origins = "https://localhost:4200")
+@RequestMapping("/account")
 public class AccountController {
 	
 	private MultiValueMap<String, String> map;

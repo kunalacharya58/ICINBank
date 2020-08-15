@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.project.service.ChequeBookRequestService;
 import com.project.service.UserService;
 
 @RestController
+@CrossOrigin(origins = "https://localhost:4200")
 @RequestMapping(path = "/chequebookrequest")
 public class ChequeBookRequestController {
 	
@@ -29,7 +31,7 @@ public class ChequeBookRequestController {
 	MultiValueMap<String, String> map;
 	
 	// for user to send request
-	@PostMapping("/primary/{userId}")
+	@GetMapping("/primary/{userId}")
 	public ResponseEntity<ChequeBookRequest> createRequestPrimary(@PathVariable long userId) {
 		User user = userService.getUserById(userId);
 		ChequeBookRequest chequeBookRequest = null;
@@ -41,13 +43,13 @@ public class ChequeBookRequestController {
 		}
 		chequeBookRequest = chequeBookRequestService.createRequest(userId, "primary");
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
+		map.add("Access-Control-Expose-Headers", "message");
 		return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.OK);
 	}
 	
 	// for user to send request
-	@PostMapping("/savings/{userId}")
+	@GetMapping("/savings/{userId}")
 	public ResponseEntity<ChequeBookRequest> createRequestSavings(@PathVariable long userId) {
 		User user = userService.getUserById(userId);
 		ChequeBookRequest chequeBookRequest = null;
@@ -59,8 +61,9 @@ public class ChequeBookRequestController {
 		}
 		chequeBookRequest = chequeBookRequestService.createRequest(userId, "savings");
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
+		map.add("Access-Control-Expose-Headers", "message");
+		
 		return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.OK);
 	}
 	

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cheque',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChequeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService : UserService) { }
 
+  accoutType : '';
+  error = false;
+  success = false;
+  errorMsg = '';
   ngOnInit(): void {
+  }
+  
+  submit(){
+    console.log(this.accoutType)
+    this.userService.requestCB(this.accoutType).subscribe(
+      (res)=>{
+        
+          this.error = false
+          this.success = true
+          this.accoutType = undefined
+          this.errorMsg = res.headers.get('message')
+        
+        console.log(res)
+      },
+      (err:HttpErrorResponse) =>{
+        this.errorMsg = err.headers.get('message');
+        this.error = true;
+        this.success = false;
+        if(this.accoutType === undefined){
+          this.errorMsg = "enter complete information";
+        }
+        console.log(err)
+      }
+    );
+    
   }
 
 }
