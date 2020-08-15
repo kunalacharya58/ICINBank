@@ -7,9 +7,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.project.model.Admin;
 import com.project.model.ChequeBookRequest;
 import com.project.model.User;
 import com.project.service.AccountService;
+import com.project.service.AdminService;
 import com.project.service.ChequeBookRequestService;
 import com.project.service.RegisterService;
 
@@ -28,12 +30,17 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 	
 	@Autowired
 	AccountService accServ;
+	
+	@Autowired
+	AdminService adminServ;
 
 	@Override
 	public void run(String... args) throws Exception {
 		LocalDate date = LocalDate.now();
 		User user = new User("John", "Doe", "0987654321", "johndoe@gmail.com", "johndoe", "secretpass", date, "street");
+		Admin admin = new Admin("adminUsername", "adminPassword");
 		
+		adminServ.createAdmin(admin);
 		regServ.createUser(user);
 		
 		accServ.deposit(2500, "primary", user.getId());
