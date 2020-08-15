@@ -1,6 +1,9 @@
 package com.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,12 +11,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.project.model.User;
 import com.project.service.UserService;
 
 @RestController
 @RequestMapping(path="/user")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 	
 	@Autowired
@@ -38,9 +41,9 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable("id") long id) {
+	public  ResponseEntity<User> getUserById(@PathVariable("id") long id) {
 		// TODO Auto-generated method stub
-		return service.getUserById(id);
+		return new ResponseEntity<User>(service.getUserById(id),HttpStatus.OK);
 	}
 
 }

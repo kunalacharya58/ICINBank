@@ -7,6 +7,7 @@ import { DepositComponent } from './user/components/deposit/deposit.component';
 import { BaseComponent } from './user/components/base/base.component';
 import { WithdrawComponent } from './user/components/withdraw/withdraw.component';
 import { ChequeComponent } from './user/components/cheque/cheque.component';
+import { ProfileComponent } from './user/components/profile/profile.component';
 
 const routes: Routes = [
   { path: "", redirectTo: 'login', pathMatch:'full'},
@@ -17,7 +18,8 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'deposit', component: DepositComponent },
     { path: 'withdraw', component: WithdrawComponent },
-    { path: 'chequebook', component: ChequeComponent }
+    { path: 'chequebook', component: ChequeComponent },
+    { path: 'profile', component: ProfileComponent }
   ]},
  ];
 
