@@ -22,17 +22,17 @@ public class IcinBankBackendApplication  {
 		SpringApplication.run(IcinBankBackendApplication.class, args);
 	}
 	
-	@Autowired
-	RegisterService regServ;
-	
-	@Autowired
-	ChequeBookRequestService cbrServ;
-	
-	@Autowired
-	AccountService accServ;
-	
-	@Autowired
-	AdminService adminServ;
+//	@Autowired
+//	RegisterService regServ;
+//	
+//	@Autowired
+//	ChequeBookRequestService cbrServ;
+//	
+//	@Autowired
+//	AccountService accServ;
+//	
+//	@Autowired
+//	AdminService adminServ;
 
 	// @Override
 	// public void run(String... args) throws Exception {
