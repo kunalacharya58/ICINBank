@@ -25,6 +25,7 @@ export class ChequeComponent implements OnInit {
         
           this.error = false
           this.success = true
+          this.accoutType = undefined
           this.errorMsg = res.headers.get('message')
         
         console.log(res)
@@ -33,7 +34,7 @@ export class ChequeComponent implements OnInit {
         this.errorMsg = err.headers.get('message');
         this.error = true;
         this.success = false;
-        if(err.status === 400){
+        if(this.accoutType === undefined){
           this.errorMsg = "enter complete information";
         }
         console.log(err)

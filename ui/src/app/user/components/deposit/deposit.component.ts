@@ -17,7 +17,7 @@ export class DepositComponent implements OnInit {
   error = false;
   errorMsg = '';
   success = false;
-  constructor(private user: UserService, private router: Router) {}
+  constructor(private user: UserService) {}
 
   ngOnInit(): void {}
 

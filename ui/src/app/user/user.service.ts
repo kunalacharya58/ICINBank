@@ -42,6 +42,6 @@ export class UserService {
   requestCB(accountType : string){
     let userId = localStorage.getItem('userId')
     let url = "http://localhost:8080/chequebookrequest/"+accountType+"/"+userId
-    return this.http.get<HttpResponse<any>>(url);
+    return this.http.get<HttpResponse<any>>(url,this.httpOptions);
   }
 }
