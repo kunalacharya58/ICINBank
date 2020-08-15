@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       username: [''],
       password: [''],
     });
-    if(localStorage.getItem('userId') == '' || localStorage.getItem('userId') == null) {
+    if(sessionStorage.getItem('userId') == '' || sessionStorage.getItem('userId') == null) {
       this.loggedIn = false;
     } else {
       this.loggedIn = true;
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       (resp) => {
         if (resp.ok) {
           this.loggedIn = true;
-          localStorage.setItem('userId', resp.headers.get('userID'));
+          sessionStorage.setItem('userId', resp.headers.get('userID'));
           this.router.navigate(['user']);
         }
       },
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     );
   }
   ngOnInit(): void {
-    if(localStorage.getItem('userId') == '' || localStorage.getItem('userId') == null) {
+    if(sessionStorage.getItem('userId') == '' || sessionStorage.getItem('userId') == null) {
       this.loggedIn = false;
     } else {
       this.loggedIn = true;

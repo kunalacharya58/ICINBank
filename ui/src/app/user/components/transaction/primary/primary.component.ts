@@ -13,7 +13,6 @@ export class PrimaryComponent implements OnInit {
   ngOnInit(): void {
     this.acc.getPrimaryTransaction().subscribe((resp) => {
       resp.forEach((item) => {
-        console.log(item)
         this.transactions.push(item);
       });
     });

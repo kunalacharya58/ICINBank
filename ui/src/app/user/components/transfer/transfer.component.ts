@@ -36,10 +36,9 @@ export class TransferComponent implements OnInit {
   }
 
   submitSelf(){
-    console.log(this.selfTransfer.accountType)
     if(this.selfTransfer.amount !== '' && this.selfTransfer.accountType !== ''){
 
-      this.selfTransfer['userID'] = localStorage.getItem('userId');
+      this.selfTransfer['userID'] = sessionStorage.getItem('userId');
       this.acc.sendSelf(this.selfTransfer).subscribe(
         (resp) => {
           this.err = false

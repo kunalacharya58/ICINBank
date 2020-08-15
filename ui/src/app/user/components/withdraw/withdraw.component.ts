@@ -12,7 +12,7 @@ export class WithdrawComponent implements OnInit {
   withdraw = {
     accountType: [''],
     amount: [''],
-    userID: localStorage.getItem('userId'),
+    userID: sessionStorage.getItem('userId'),
   };
 
   error = false;
@@ -25,10 +25,10 @@ export class WithdrawComponent implements OnInit {
   }
 
   numberOnly(event): boolean {
-    
+
     this.error = false;
-    this.success = false; 
-    
+    this.success = false;
+
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -39,7 +39,6 @@ export class WithdrawComponent implements OnInit {
   submit() {
     this.user.withdraw(JSON.stringify(this.withdraw)).subscribe(
       (resp) => {
-        console.log(resp.status)
         if (resp.ok) {
           this.error = false
           this.success = true;

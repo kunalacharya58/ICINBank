@@ -22,18 +22,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.acc.getPrimaryBalance().subscribe(
       (resp) => {
-        console.log(resp);
         this.primary = resp
        },
-      (err) => { console.log(err) }
+      (err) => {  }
     )
 
     this.acc.getSavingsBalance().subscribe(
       (resp) => {
-        console.log(resp);
         this.savings = resp
        },
-      (err) => { console.log(err) }
+      (err) => {  }
     )
   }
 

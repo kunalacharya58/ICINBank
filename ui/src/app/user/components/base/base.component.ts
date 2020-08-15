@@ -12,7 +12,7 @@ export class BaseComponent implements OnInit {
   constructor(private router:Router, private auth:AuthService) { }
 
   ngOnInit(): void {
-    if(localStorage.getItem('userId') === ''|| localStorage.getItem('userId')===null)
+    if(sessionStorage.getItem('userId') === ''|| sessionStorage.getItem('userId')===null)
       this.router.navigate(['login'])
   }
 

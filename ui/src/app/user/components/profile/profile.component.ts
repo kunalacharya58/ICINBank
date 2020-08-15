@@ -40,6 +40,7 @@ export class ProfileComponent implements OnInit {
     message : "new profile details are updated", boolean : false
   }
 
+  errMsg = ''
   newPassword = ''
   newEmail = ''
   newAddress = ''
@@ -49,20 +50,18 @@ export class ProfileComponent implements OnInit {
 
     this.userService.updateUser(this.userDetails).subscribe(
       res=>{
-        console.log(res)
         this.success.boolean = true;
         this.newPassword = this.newEmail = this.newAddress = this.confPass = ''
       }
     );
   }
   ngOnInit(): void {
-    console.log(this.userService.getUser().subscribe(
+    this.userService.getUser().subscribe(
       resp => {
-        console.log(resp)
         this.userDetails = resp
       },
-      (err) => { console.log(err) }
-    ))
+      (err) => { this.errMsg = err.headers.get('message') }
+    )
   }
 
   isEmpty(str : string){
