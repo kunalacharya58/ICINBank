@@ -1,0 +1,40 @@
+<section>
+  <div class="container">
+    <div class="table-responsive section-padding">
+        <table class="table table-style">
+          <thead>
+            <tr style="font-size: 20px; color:#212121; font-weight: bold;">
+              <th>Sr. No.</th>
+              <th>Date</th>
+              <th>Transaction Type</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Available Balance</th>
+            </tr>
+          </thead>
+          <tbody class="table-body-style">
+            <tr *ngFor="let t of transactions; index as i">
+              <td>
+                {{i+1}}
+              </td>
+              <td>
+                {{t.date|date}}
+              </td>
+              <td>
+                {{t.type}}
+              </td>
+              <td>
+                {{t.description}}
+              </td>
+              <td>
+                {{ t.amount }}
+              </td>
+              <td>
+                {{t.availableBalance}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+  </div>
+</section>

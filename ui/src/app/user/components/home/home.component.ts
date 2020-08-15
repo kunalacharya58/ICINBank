@@ -7,26 +7,34 @@ import { AccountService } from '../../account.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private ac:AccountService) { }
+  constructor(private acc:AccountService) { }
 
-  primary : any 
-  savings : any
+  primary = {
+    number: 0,
+    id: 1,
+    balance: 0
+  }
+  savings  = {
+    number: 0,
+    id: 1,
+    balance: 0
+  }
   ngOnInit(): void {
-    console.log(this.ac.getPrimaryBalance().subscribe(
-      (resp) => { 
+    this.acc.getPrimaryBalance().subscribe(
+      (resp) => {
         console.log(resp);
         this.primary = resp
        },
       (err) => { console.log(err) }
-    ))
+    )
 
-    console.log(this.ac.getSavingsBalance().subscribe(
-      (resp) => { 
+    this.acc.getSavingsBalance().subscribe(
+      (resp) => {
         console.log(resp);
         this.savings = resp
        },
       (err) => { console.log(err) }
-    ))
+    )
   }
 
 

@@ -10,14 +10,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.project.model.User;
 import com.project.service.AccountService;
 import com.project.service.RegisterService;
-
+//implements CommandLineRunner
 @SpringBootApplication
-public class IcinBankBackendApplication {
+public class IcinBankBackendApplication  {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IcinBankBackendApplication.class, args);
 	}
-	
+}	
 //	@Autowired
 //	RegisterService regServ;
 //	
@@ -38,4 +38,4 @@ public class IcinBankBackendApplication {
 //		accServ.withdraw(500, "savings", user.getId());
 //	}
 
-}
+//}

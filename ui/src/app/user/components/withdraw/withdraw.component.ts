@@ -25,6 +25,10 @@ export class WithdrawComponent implements OnInit {
   }
 
   numberOnly(event): boolean {
+    
+    this.error = false;
+    this.success = false; 
+    
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
@@ -40,6 +44,9 @@ export class WithdrawComponent implements OnInit {
           this.error = false
           this.success = true;
           this.errorMsg = resp.headers.get('message')
+
+          this.withdraw.accountType = [''];
+          this.withdraw.amount = [''];
         };
 
       },

@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css', '../base/base.component.css']
 })
 export class ProfileComponent implements OnInit {
 
   constructor(private userService : UserService, private router : Router) { }
-  
+
   public userDetails : User;
-  
+
   emailError = {
     error : false,
     message : "enter valid e-mail"
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     { message : "must contain atleast one number" , error : false},
     { message : "must contain atleast one uppercase character", error : false },
     { message : "must contain atleast one lowercase character" , error : false},
-    { message : "must contain atleast one special character", error : false } 
+    { message : "must contain atleast one special character", error : false }
   ]
 
   confPassError = {
@@ -39,7 +39,7 @@ export class ProfileComponent implements OnInit {
   success = {
     message : "new profile details are updated", boolean : false
   }
-  
+
   newPassword = ''
   newEmail = ''
   newAddress = ''
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): void {
     console.log(this.userService.getUser().subscribe(
-      resp => { 
+      resp => {
         console.log(resp)
         this.userDetails = resp
       },
@@ -90,7 +90,7 @@ export class ProfileComponent implements OnInit {
   }
 
   validateEmail(){
-    
+
     this.success.boolean = false
 
     let regex = new RegExp(/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/);
@@ -107,8 +107,8 @@ export class ProfileComponent implements OnInit {
     this.passwordError[2].error = !this.haveUpper(this.newPassword) && !this.isEmpty(this.newPassword)
     this.passwordError[3].error = !this.haveLower(this.newPassword) && !this.isEmpty(this.newPassword)
     this.passwordError[4].error = !this.haveSpecialCharacters(this.newPassword) && !this.isEmpty(this.newPassword)
-    
-    return  !this.passwordError[0].error && 
+
+    return  !this.passwordError[0].error &&
             !this.passwordError[1].error &&
             !this.passwordError[2].error &&
             !this.passwordError[3].error &&
@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit {
   }
 
   validateConfirmPassword(){
-    
+
     this.success.boolean =false
 
     this.confPassError.error = !(this.newPassword === this.confPass) && !this.isEmpty(this.confPass)
