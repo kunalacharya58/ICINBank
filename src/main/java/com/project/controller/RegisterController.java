@@ -39,14 +39,12 @@ public class RegisterController {
 		// check for duplicate email
 		if (userService.getUserByEmail(user.getEmail()) != null) {
 			map.add("message", "email exists");
-			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
 		// check for duplicate user name
 		if (userService.getUserByUsername(user.getUsername()) != null) {
 			map.add("message", "username exists");
-			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<User>(null, map, HttpStatus.CONFLICT);
 		}
 		
@@ -54,12 +52,10 @@ public class RegisterController {
 		newUser = regService.createUser(user);
 		if (newUser == null) {			
 			map.add("message", "registration failed, check fields");
-			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<User>(null, map, HttpStatus.BAD_REQUEST);
-		} else {			
+		} else {
 			map.add("message", "success");
-			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<User>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		}
 		
 	}
