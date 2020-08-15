@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -41,8 +42,8 @@ export class AccountService {
       }),
       observe: 'response' as 'response',
     };
-    console.log(data)
-    let url = "http://localhost:8080/account/exchange"
+    data = JSON.stringify(data)
+    let url = "http://localhost:8080/exchange"
     return this.http.post(url,data,httpOptions)
   }
 

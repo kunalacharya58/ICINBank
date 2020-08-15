@@ -36,7 +36,7 @@
         ><input
           type="radio"
           name="accountSelect"
-          [(ngModel)]="selfTransfer.type"
+          [(ngModel)]="selfTransfer.accountType"
           value="p2s"
           [checked]
         />Primary to Savings</label
@@ -45,7 +45,7 @@
         ><input
           type="radio"
           name="accountSelect"
-          [(ngModel)]="selfTransfer.type"
+          [(ngModel)]="selfTransfer.accountType"
           value="s2p"
         />Savings to Primary</label
       >
@@ -60,7 +60,7 @@
         name="amount"
         class="transfer-label"
         type="text"
-        [(ngModel)]="selfTransfer.amt"
+        [(ngModel)]="selfTransfer.amount"
         (keypress)="numberOnly($event)"
         placeholder="₹ 0.00"
       />
@@ -179,3 +179,15 @@
     </section>
   </div>
 </section>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-3 alert alert-danger text-center error" *ngIf="err">
+      {{ errMsg|titlecase }}
+    </div>
+    <div class="col-sm-3 alert alert-success text-center error" *ngIf="success">
+      {{ errMsg|titlecase }}
+    </div>
+  </div>
+
+</div>
+

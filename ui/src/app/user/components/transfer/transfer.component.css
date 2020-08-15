@@ -22,3 +22,12 @@
   font-family: "montserrat";
 
 }
+
+
+.error{
+  margin-left: -5%;
+  margin-top: 1%;
+  padding-right: 0%;
+  border: transparent;
+  border-radius: 50px;
+}

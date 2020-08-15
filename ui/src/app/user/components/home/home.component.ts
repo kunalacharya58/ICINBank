@@ -9,8 +9,16 @@ export class HomeComponent implements OnInit {
 
   constructor(private acc:AccountService) { }
 
-  primary : any
-  savings : any
+  primary = {
+    number: 0,
+    id: 1,
+    balance: 0
+  }
+  savings  = {
+    number: 0,
+    id: 1,
+    balance: 0
+  }
   ngOnInit(): void {
     this.acc.getPrimaryBalance().subscribe(
       (resp) => {

@@ -12,16 +12,17 @@ export class TransferComponent implements OnInit {
   self = false;
   other = false;
   selection = ''
-
-
+  errMsg = ''
+  err = false
+  success = false
   selfTransfer = {
-    type: '',
-    amt: '',
+    accountType: '',
+    amount: '',
   }
 
   otherTransfer = {
     type: '',
-    amt: '',
+    amount: '',
     accNo: '',
   }
   selectValue(){
@@ -35,14 +36,20 @@ export class TransferComponent implements OnInit {
   }
 
   submitSelf(){
-    if(this.selfTransfer.amt !== ''){
+    console.log(this.selfTransfer.accountType)
+    if(this.selfTransfer.amount !== '' && this.selfTransfer.accountType !== ''){
+
       this.selfTransfer['userID'] = localStorage.getItem('userId');
       this.acc.sendSelf(this.selfTransfer).subscribe(
         (resp) => {
-          console.log(resp)
+          this.err = false
+          this.success = true
+          this.errMsg = resp.headers.get('message')
         },
         (err) => {
-          console.log(err)
+          this.err = true
+          this.success = false
+          this.errMsg = err.headers.get('message')
         }
       )
     }
