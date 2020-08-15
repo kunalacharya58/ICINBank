@@ -30,7 +30,7 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.getItem('adminId') == '' || sessionStorage.getItem('adminId') == null) {
     } else {
-      this.router.navigate(['../home']);
+      this.router.navigate(['admin']);
     }
   }
 

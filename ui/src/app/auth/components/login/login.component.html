@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label for="lemail" class="form-label" >Customer ID</label><br>
                 <input type="text" id="lCustId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
-                <div class="alert alert-danger error" *ngIf="usernameError">
+                <div class="alert alert-danger error text-center" *ngIf="usernameError">
                     {{usernameErrorMessage}}
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label for="lpass" class="form-label" >Password</label><br>
                 <input type="password" id="lpass" class="form-input"  formControlName="password" (input)= "validatePassword()" required  >
-                <div class="alert alert-danger error" *ngIf="passError">
+                <div class="alert alert-danger error text-center" *ngIf="passError">
                     {{passErrorMessage}}
                 </div>
             </div>
@@ -37,7 +37,7 @@
             </div>
 
         </form>
-        <div *ngIf="error" class="alert alert-danger error">
+        <div *ngIf="error" class="alert alert-danger error text-center">
           {{ errorMsg|titlecase }}
         </div>
     </section>

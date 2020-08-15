@@ -13,3 +13,11 @@
   margin-left: 17%;
   font-family: "montserrat";
 }
+
+.error{
+  margin: 1%;
+  padding: 1.5%;
+  padding-right: 0%;
+  border: transparent;
+  border-radius: 50px;
+}

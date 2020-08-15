@@ -17,18 +17,15 @@ export class ChequeComponent implements OnInit {
   errorMsg = '';
   ngOnInit(): void {
   }
-  
+
   submit(){
-    console.log(this.accoutType)
     this.userService.requestCB(this.accoutType).subscribe(
       (res)=>{
-        
+
           this.error = false
           this.success = true
           this.accoutType = undefined
           this.errorMsg = res.headers.get('message')
-        
-        console.log(res)
       },
       (err:HttpErrorResponse) =>{
         this.errorMsg = err.headers.get('message');
@@ -37,10 +34,9 @@ export class ChequeComponent implements OnInit {
         if(this.accoutType === undefined){
           this.errorMsg = "enter complete information";
         }
-        console.log(err)
       }
     );
-    
+
   }
 
 }
