@@ -7,8 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.project.model.ChequeBookRequest;
 import com.project.model.User;
 import com.project.service.AccountService;
+import com.project.service.ChequeBookRequestService;
 import com.project.service.RegisterService;
 
 @SpringBootApplication
@@ -20,6 +22,9 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 	
 	@Autowired
 	RegisterService regServ;
+	
+	@Autowired
+	ChequeBookRequestService cbrServ;
 	
 	@Autowired
 	AccountService accServ;
@@ -36,6 +41,13 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 		
 		accServ.withdraw(300, "primary", user.getId());
 		accServ.withdraw(500, "savings", user.getId());
+		
+		ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
+		ChequeBookRequest cbrSavings = cbrServ.createRequest(user.getId(), "savings");
+		
+		
+		cbrServ.confirmRequest(cbrPrimary.getId());
+		cbrServ.confirmRequest(cbrSavings.getId());
 	}
 
 }
