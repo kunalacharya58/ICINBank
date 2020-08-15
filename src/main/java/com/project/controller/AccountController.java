@@ -118,4 +118,50 @@ public class AccountController {
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 	
+	@PostMapping("/exchange")
+	public ResponseEntity<String> exchangePrimaryToSavings(@RequestBody TransferSlip slip) {
+		double amount = slip.getAmount();
+		String accountType = slip.getAccountType();
+		long userId = slip.getUserID();
+		double accountBalance = 0;
+		
+		if(accountType.equalsIgnoreCase("p2s")) {
+			accountBalance = userService.getUserById(userId).getPrimaryAccount().getBalance();
+			if(amount > accountBalance) {
+				map = new LinkedMultiValueMap<>();
+				map.add("Access-Control-Expose-Headers", "message");
+				map.add("message", "insufficient balance");
+				
+				return new ResponseEntity<>(map, HttpStatus.FORBIDDEN);
+			}
+			accountService.exchangePrimaryToSavings(amount, userId);
+		}
+		
+		else if(accountType.equalsIgnoreCase("s2p")) {
+			accountBalance = userService.getUserById(userId).getSavingsAccount().getBalance();
+			if(amount > accountBalance) {
+				map = new LinkedMultiValueMap<>();
+				map.add("Access-Control-Expose-Headers", "message");
+				map.add("message", "insufficient balance");
+				
+				return new ResponseEntity<>(map, HttpStatus.FORBIDDEN);
+			}
+			accountService.exchangeSavingsToPrimary(amount, userId);
+		}
+		
+		else {
+			map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "exchange type unidentified");
+			
+			return new ResponseEntity<>(map, HttpStatus.BAD_REQUEST);
+		}
+		
+		map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		
+		return new ResponseEntity<>(map, HttpStatus.OK);
+	}
+	
 }
