@@ -13,10 +13,13 @@ import { WithdrawComponent } from './components/withdraw/withdraw.component';
 import { BaseComponent } from './components/base/base.component';
 import { ChequeComponent } from './components/cheque/cheque.component';
 import { FormsModule } from '@angular/forms';
+import { PrimaryComponent } from './components/transaction/primary/primary.component';
+import { SavingsComponent } from './components/transaction/savings/savings.component';
+
 
 
 @NgModule({
-  declarations: [NavbarComponent, HomeComponent, TransferComponent, DepositComponent, ProfileComponent, RegisterComponent, TransactionComponent, WithdrawComponent, BaseComponent, ChequeComponent],
+  declarations: [NavbarComponent, HomeComponent, TransferComponent, DepositComponent, ProfileComponent, RegisterComponent, TransactionComponent, WithdrawComponent, BaseComponent, ChequeComponent, PrimaryComponent, SavingsComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

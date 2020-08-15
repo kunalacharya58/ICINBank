@@ -7,13 +7,10 @@ import { AccountService } from '../../account.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private ac:AccountService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(this.ac.getPrimaryBalance().subscribe(
-      (resp) => { console.log(resp) },
-      (err) => { console.log(err) }
-    ))
+
   }
 
 
