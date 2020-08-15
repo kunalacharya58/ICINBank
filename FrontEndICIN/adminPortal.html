@@ -15,7 +15,7 @@
         <!-- Custom Stylesheet-->
         <link rel="stylesheet" type="text/css" href="css/main.css">        
         <link rel="stylesheet" type="text/css" href="css/homePage.css">     
-        <link rel="stylesheet" type="text/css" href="css/admin.css">     
+        <link rel="stylesheet" type="text/css" href="css/adminPortal.css">     
 
         <title>Admin Portal</title>  
     </head>
@@ -27,14 +27,14 @@
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
                       <div class="navbar-header">
-                        <img src="css/images/croppedlogo.png" alt="logo" class="logo">    
+                        <a href="adminPortal.html"><img src="css/images/croppedlogo.png" alt="logo" class="logo"></a>  
                         <p class="admin-head-style"> - Admin Portal</p>
                       </div>
 
                       <ul class="nav navbar-nav">
-                        
+                        <li><a href="adminPortal.html">Home</a></li>
                         <li><a href="displayAccounts.html">User Accounts</a></li>
-                        <li><a href="transfer.html">Cheque Book Requests</a></li>
+                        <li><a href="chequeBookRequest.html">Cheque Book Requests</a></li>
                         
                       </ul>
 
@@ -45,6 +45,31 @@
                   </nav>
                   <hr>
                 
+                <section>
+                  <h3 class="heading-main">Pending Account Validations</h3>
+
+                  <div class="table-responsive  section-padding">          
+                      <table class="table table-hover table-style">
+                        <thead>
+                          <tr style="font-size: 16px; color:#212121; font-weight: bold;">
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email Address</th>
+                            <th>Primary Balance</th>
+                            <th>Savings Balance</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-body-style">
+                          <tr>
+                            
+                          </tr>
+                        </tbody>
+                      </table>
+                      </div>
+                </section>
+
                
                 <footer class="section-padding footer-font" style="margin-top: 20%;">
                     <div style="margin-bottom: 2%;">
