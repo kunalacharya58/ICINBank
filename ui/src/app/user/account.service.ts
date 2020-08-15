@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,8 @@ export class AccountService {
     let url = "http://localhost:8080/savings/"+userId
     return this.http.get<any>(url)
   }
+
+
 
   constructor(private http:HttpClient) { }
 
@@ -30,6 +32,18 @@ export class AccountService {
     let userId = localStorage.getItem('userId')
     let url = "http://localhost:8080/primary/"+userId
     return this.http.get<any>(url)
+  }
+
+  sendSelf(data) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':'application/json; charset=UTF-8',
+      }),
+      observe: 'response' as 'response',
+    };
+    console.log(data)
+    let url = "http://localhost:8080/account/exchange"
+    return this.http.post(url,data,httpOptions)
   }
 
 }

@@ -11,6 +11,7 @@ import { ProfileComponent } from './user/components/profile/profile.component';
 import { TransactionComponent } from './user/components/transaction/transaction.component';
 import { PrimaryComponent } from './user/components/transaction/primary/primary.component';
 import { SavingsComponent } from './user/components/transaction/savings/savings.component';
+import { TransferComponent } from './user/components/transfer/transfer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
         {path: 'primary', component:PrimaryComponent},
         {path: 'savings', component:SavingsComponent}
       ] },
+      { path: 'transfer', component: TransferComponent },
     ],
   },
 ];
