@@ -45,7 +45,59 @@
                   </nav>
                   <hr>
                 
-                  
+                  <section class="section-padding-transfer"  style="margin-left: 27%;">
+                    <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 2%; margin-left: 15%;">Fund Transfer</h3>
+
+                      <div class="radio">
+                        <label class="transfer-label" style="font-weight: bold;margin-right: 10%;">Account Type</label>
+                        <label class="radio-inline transfer-label"><input type="radio" name="transactionType" value="self">Self</label>
+                        <label class="radio-inline transfer-label" style="padding-left: 60px;"><input type="radio" name="transactionType" value="other">Other</label>
+                    </div>
+
+                    
+                    <div id="form-1" style="display: none">
+                      <div>
+                        <label class="transfer-label" style="font-weight: bold; margin-right: 85px;" for="">Bank Name </label>
+                        <input class="transfer-label" type="text" placeholder="Enter the Bank Name" >
+                    </div>
+
+                      <div>
+                          <label class="transfer-label" style="font-weight: bold;margin-right: 74px;padding-bottom: 4%;" for="">Bank Branch </label>
+                          <input class="transfer-label" type="text" placeholder="Enter the Bank Branch" >
+                          </div>
+
+                      <div>
+                          <label class="transfer-label" style="font-weight: bold;margin-right: 92px;padding-bottom: 4%;" for="">IFSC Code</label>
+                          <input class="transfer-label" type="text" placeholder="Enter the IFSC Code" >
+                          </div>
+
+                      <div>
+                          <label class="transfer-label" style="font-weight: bold;margin-right: 6%;padding-bottom: 4%;" for="">Enter Amount </label>
+                          <input class="transfer-label" type="number" placeholder="₹ 0.00" >
+                      </div>
+
+                      <div>
+                      <label class="transfer-label" style="font-weight: bold;margin-right: 40px;" for="">Account Number</label>
+                      <input class="transfer-label" type="number" placeholder="Enter the Account Number">
+                      </div>
+
+                      <div style="margin-left: 10%;">
+                        <button type="submit" class="button-style button-padding">Transfer</button>
+                    </div>
+
+                    <div style="margin-left: 10%;">
+                      <button type="submit" class="button-style button-padding" style="margin-left: 22%;">Transfer</button>
+                  </div>
+
+                      Company Name: <input type="text" hidden="true"/> 
+                      Designation: <input type="text" hidden="true"/> 
+                      Year_of_Experience: <input type="text" hidden="true"/> 
+                  </div>
+
+                  <div id="form-2" style="display: none">
+                    Company Name: <input type="text" hidden="true"/> 
+                </div>
+                </section>        
                
                 <footer class="section-padding footer-font" style="margin-top: 20%;">
                     <div style="margin-bottom: 2%;">
@@ -67,7 +119,8 @@
             </div>
         </div>
       
-       
+        <script src="display.js"></script>
+
 
     </body>
 </html>
