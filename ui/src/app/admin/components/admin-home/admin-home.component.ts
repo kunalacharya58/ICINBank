@@ -19,7 +19,6 @@ export class AdminHomeComponent implements OnInit {
   getAll(){
     this.adserve.getAllUsers().subscribe(
       (resp) => {
-        console.log(resp)
         resp.forEach((u)=>{
         this.users.push(u);
       })},

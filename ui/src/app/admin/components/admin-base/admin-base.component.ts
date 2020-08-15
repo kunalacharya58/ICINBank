@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AdminService } from '../../admin.service';
 
 @Component({
   selector: 'app-admin-base',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminBaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private adserve:AdminService,private router:Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(sessionStorage.getItem('adminId') === ''|| sessionStorage.getItem('adminId')===null)
+      this.router.navigate(['admin-login'])
+  }
+
+  logout(){
+    this.adserve.logout();
+    location.reload()
   }
 
 }

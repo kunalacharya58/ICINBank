@@ -10,12 +10,18 @@ import { AdminBaseComponent } from './admin/components/admin-base/admin-base.com
 import { AdminHomeComponent } from './admin/components/admin-home/admin-home.component'
 import { AdminModule } from "./admin/admin.module";
 import { AdminChequebookComponent } from './admin/components/admin-chequebook/admin-chequebook.component';
+import { PrivacyComponent } from './shared/component/privacy/privacy.component';
+import { SecurityComponent } from './shared/component/security/security.component';
+import { BankRegulationComponent } from './shared/component/bank-regulation/bank-regulation.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminBaseComponent,
     AdminHomeComponent,
     AdminChequebookComponent,
+    PrivacyComponent,
+    SecurityComponent,
+    BankRegulationComponent,
   ],
   imports: [
     BrowserModule,

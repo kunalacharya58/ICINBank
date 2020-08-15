@@ -1,56 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { HttpErrorResponse } from '@angular/common/http';
-import { AuthService } from '../../auth.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { AdminService } from '../../admin.service';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
+
+  form: FormGroup;
   usernameError = false;
   usernameErrorMessage = 'Username should contain only alphabets or numbers';
 
   passError = false;
   passErrorMessage = 'must contain atleast 6 characters';
 
-  form: FormGroup;
-  error = false;
-  errorMsg = '';
-  constructor(
-    private fb: FormBuilder,
-    private auth: AuthService,
-    private router: Router
-  ) {
-    this.form = this.fb.group({
-      username: [''],
-      password: [''],
-    });
-    if (sessionStorage.getItem('userId') == '' || sessionStorage.getItem('userId') == null) {
-    } else {
+  error=false
+  errMsg = ''
 
-    }
-  }
-
-  submit() {
-    this.auth.login(this.form.value).subscribe(
-      (resp) => {
-        if (resp.ok) {
-          sessionStorage.setItem('userId', resp.headers.get('userID'));
-          this.router.navigate(['user']);
-        }
-      },
-      (err: HttpErrorResponse) => {
-        this.errorMsg = err.headers.get('message');
-        this.error = true;
-      }
+  constructor(private fb: FormBuilder, private adserve: AdminService, private router:Router) {
+    this.form = this.fb.group(
+      { username: [''], password: [''] }
     );
   }
+
   ngOnInit(): void {
-    if (sessionStorage.getItem('userId') == '' || sessionStorage.getItem('userId') == null) {
+    if (sessionStorage.getItem('adminId') == '' || sessionStorage.getItem('adminId') == null) {
     } else {
-      this.router.navigate(['user']);
+      this.router.navigate(['../home']);
     }
   }
 
@@ -62,6 +42,7 @@ export class LoginComponent implements OnInit {
   isEmpty(str: string) {
     return !str || str.length === 0 || str.length === undefined;
   }
+
 
   validateUserName() {
     let username = this.form.get('username').value;
@@ -82,5 +63,20 @@ export class LoginComponent implements OnInit {
     else {
       this.submit();
     }
+  }
+
+  submit() {
+    this.adserve.login(this.form.value).subscribe(
+      (resp) => {
+        if (resp.ok) {
+          sessionStorage.setItem('adminId', resp.headers.get('adminID'));
+          this.router.navigate(['user']);
+        }
+      },
+      (err: HttpErrorResponse) => {
+        this.errMsg = err.headers.get('message');
+        this.error = true;
+      }
+    );
   }
 }

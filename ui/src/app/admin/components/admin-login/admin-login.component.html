@@ -16,7 +16,7 @@
         <form [formGroup]="form" (ngSubmit)="validateFormAndSubmit()" action="POST" ngNativeValidate>
             <div class="form-group">
                 <label for="lemail" class="form-label" >Customer ID</label><br>
-                <input type="text" id="lCustId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
+                <input type="text" id="lAdId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
                 <div class="alert alert-danger error" *ngIf="usernameError">
                     {{usernameErrorMessage}}
                 </div>
@@ -33,12 +33,11 @@
 
             <div class="button-padding">
                 <button type="submit" class="button-style">Login</button>
-                <a [routerLink]="['/register']" style="margin: 15% 0% 0% 60%; color: #6b6b6b; font-family: Libre Baskerville; font-size:18px">Not Registered yet?</a>
             </div>
 
         </form>
         <div *ngIf="error" class="alert alert-danger error">
-          {{ errorMsg|titlecase }}
+          {{ errMsg|titlecase }}
         </div>
     </section>
 
