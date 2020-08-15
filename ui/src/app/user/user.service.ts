@@ -17,13 +17,13 @@ export class UserService {
   };
 
   deposit(data:any){
-    let url = 'http://localhost:8080/account/deposit'
+    let url = 'http://localhost:8080/deposit'
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   withdraw(data:any){
-    let url = 'http://localhost:8080/account/withdraw'
+    let url = 'http://localhost:8080/withdraw'
     console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
@@ -33,9 +33,9 @@ export class UserService {
     let url = "http://localhost:8080/user/"+userId
     return this.http.get<User>(url)
   }
-  
+
   updateUser(user){
-    
+
     let url = "http://localhost:8080/user/update"
     return this.http.put(url,user)
   }

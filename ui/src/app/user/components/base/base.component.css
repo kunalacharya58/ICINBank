@@ -67,13 +67,8 @@
 }
 
 .bg {
-
   background-image: url("../../../../assets/css/images/loginBg.jpg");
-
-
   height: 100%;
-
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
