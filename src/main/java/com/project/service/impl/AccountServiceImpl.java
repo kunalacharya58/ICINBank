@@ -99,7 +99,8 @@ public class AccountServiceImpl implements AccountService {
 			primaryAccount.setBalance(primaryAccount.getBalance() - amount);
 			primaryAccountDao.save(primaryAccount);
 						
-			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Withdraw From Primary Account", "Withdraw", amount, primaryAccount.getBalance(), primaryAccount);
+			PrimaryTransaction primaryTransaction = 
+					new PrimaryTransaction(date, "Withdraw From Primary Account", "Withdraw", amount, primaryAccount.getBalance(), primaryAccount);
 			transactionService.savePrimaryTransaction(primaryTransaction);
 		}
 		
@@ -110,7 +111,8 @@ public class AccountServiceImpl implements AccountService {
 			savingsAccount.setBalance(savingsAccount.getBalance() - amount);
 			savingsAccountDao.save(savingsAccount);
 			
-			SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Withdraw From Savings Account", "Withdraw", amount, savingsAccount.getBalance(), savingsAccount);
+			SavingsTransaction savingsTransaction = 
+					new SavingsTransaction(date, "Withdraw From Savings Account", "Withdraw", amount, savingsAccount.getBalance(), savingsAccount);
 			transactionService.saveSavingsTransaction(savingsTransaction);
 		}
 	}
@@ -127,6 +129,50 @@ public class AccountServiceImpl implements AccountService {
 		SavingsAccount savingsAccount = null;
 		savingsAccount = userService.getUserById(userID).getSavingsAccount();
 		return savingsAccount;
+	}
+
+	@Override
+	public void exchangePrimaryToSavings(double amount, long userId) {
+		Date date = new Date();
+		User user = userService.getUserById(userId);
+		
+		PrimaryAccount primaryAccount = user.getPrimaryAccount();
+		primaryAccount.setBalance(primaryAccount.getBalance() - amount);
+		
+		SavingsAccount savingsAccount = user.getSavingsAccount();
+		savingsAccount.setBalance(savingsAccount.getBalance() + amount);
+		
+		PrimaryTransaction primaryTransaction = 
+				new PrimaryTransaction(date, "Sent to Savings Account", "Exchange", amount, primaryAccount.getBalance(), primaryAccount);
+		SavingsTransaction savingsTransaction = 
+				new SavingsTransaction(date, "Received from Primary Account", "Exchange", amount, savingsAccount.getBalance(), savingsAccount);
+						
+		savingsAccountDao.save(savingsAccount);
+		primaryAccountDao.save(primaryAccount);
+		transactionService.savePrimaryTransaction(primaryTransaction);
+		transactionService.saveSavingsTransaction(savingsTransaction);
+	}
+
+	@Override
+	public void exchangeSavingsToPrimary(double amount, long userId) {
+		Date date = new Date();
+		User user = userService.getUserById(userId);
+		
+		SavingsAccount savingsAccount = user.getSavingsAccount();
+		savingsAccount.setBalance(savingsAccount.getBalance() - amount);
+
+		PrimaryAccount primaryAccount = user.getPrimaryAccount();
+		primaryAccount.setBalance(primaryAccount.getBalance() + amount);
+		
+		SavingsTransaction savingsTransaction = 
+				new SavingsTransaction(date, "Sent to Primary Account", "Exchange", amount, savingsAccount.getBalance(), savingsAccount);
+		PrimaryTransaction primaryTransaction = 
+				new PrimaryTransaction(date, "Received from Savings Account", "Exchange", amount, primaryAccount.getBalance(), primaryAccount);
+						
+		savingsAccountDao.save(savingsAccount);
+		primaryAccountDao.save(primaryAccount);
+		transactionService.savePrimaryTransaction(primaryTransaction);
+		transactionService.saveSavingsTransaction(savingsTransaction);
 	}
 
 }
