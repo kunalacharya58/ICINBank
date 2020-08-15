@@ -49,4 +49,20 @@ public class UserServiceImpl implements UserService {
 		return dao.findByUsername(username);
 	}
 
+	@Override
+	public void enableUser(long id) {
+		// TODO Auto-generated method stub
+		User user = getUserById(id);
+		user.setEnabled(true);
+		dao.save(user);
+	}
+
+	@Override
+	public void disableUser(long id) {
+		// TODO Auto-generated method stub
+		User user = getUserById(id);
+		user.setEnabled(false);
+		dao.save(user);
+	}
+
 }
