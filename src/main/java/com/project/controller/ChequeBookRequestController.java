@@ -35,13 +35,13 @@ public class ChequeBookRequestController {
 		ChequeBookRequest chequeBookRequest = null;
 		if (user == null) {
 			map = new LinkedMultiValueMap<>();
-			map.add("Access-Control-Expose-Header", "message");
+			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
 			return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.NOT_FOUND);
 		}
 		chequeBookRequest = chequeBookRequestService.createRequest(userId, "primary");
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.OK);
 	}
@@ -53,13 +53,13 @@ public class ChequeBookRequestController {
 		ChequeBookRequest chequeBookRequest = null;
 		if (user == null) {
 			map = new LinkedMultiValueMap<>();
-			map.add("Access-Control-Expose-Header", "message");
+			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
 			return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.NOT_FOUND);
 		}
 		chequeBookRequest = chequeBookRequestService.createRequest(userId, "savings");
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.OK);
 	}
@@ -69,7 +69,7 @@ public class ChequeBookRequestController {
 	public ResponseEntity<Iterable<ChequeBookRequest>> getAllRequests() {
 		Iterable<ChequeBookRequest> requestsList = chequeBookRequestService.getAllRequests();
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(requestsList, map, HttpStatus.OK);
 	}
@@ -81,13 +81,13 @@ public class ChequeBookRequestController {
 		chequeBookRequest = chequeBookRequestService.getById(cbrId);
 		if (chequeBookRequest == null) {
 			map = new LinkedMultiValueMap<>();
-			map.add("Access-Control-Expose-Header", "message");
+			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "request not found");
 			return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.NOT_FOUND);
 		}
 		chequeBookRequest = chequeBookRequestService.confirmRequest(cbrId);
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(chequeBookRequest, map, HttpStatus.OK);
 	}
@@ -97,7 +97,7 @@ public class ChequeBookRequestController {
 	public ResponseEntity<Iterable<ChequeBookRequest>> getAllPendingRequests() {
 		Iterable<ChequeBookRequest> pendingRequestsList = chequeBookRequestService.getAllPendingRequests();
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(pendingRequestsList, map, HttpStatus.OK);
 	}
@@ -109,13 +109,13 @@ public class ChequeBookRequestController {
 		Iterable<ChequeBookRequest> pendingRequestsList = null;
 		if (user == null) {
 			map = new LinkedMultiValueMap<>();
-			map.add("Access-Control-Expose-Header", "message");
+			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
 			return new ResponseEntity<>(pendingRequestsList, map, HttpStatus.NOT_FOUND);
 		}
 		pendingRequestsList = chequeBookRequestService.getAllPendingRequestsByRequester(id);
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(pendingRequestsList, map, HttpStatus.OK);
 	}
@@ -127,13 +127,13 @@ public class ChequeBookRequestController {
 		Iterable<ChequeBookRequest> requestsList = null;
 		if (user == null) {
 			map = new LinkedMultiValueMap<>();
-			map.add("Access-Control-Expose-Header", "message");
+			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
 			return new ResponseEntity<>(requestsList, map, HttpStatus.NOT_FOUND);
 		}
 		requestsList = chequeBookRequestService.getAllRequestsByRequester(id);
 		map = new LinkedMultiValueMap<>();
-		map.add("Access-Control-Expose-Header", "message");
+		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
 		return new ResponseEntity<>(requestsList, map, HttpStatus.OK);
 	}
