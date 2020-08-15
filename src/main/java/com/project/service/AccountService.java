@@ -11,5 +11,8 @@ public interface AccountService {
 	
 	void deposit(double amount, String accountType, long userId);
 	void withdraw(double amount, String accountType, long userId);
+	
+	PrimaryAccount findPrimaryAccount(long userID);
+	SavingsAccount findSavingsAccount(long userID);
 
 }

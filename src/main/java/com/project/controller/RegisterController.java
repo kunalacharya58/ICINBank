@@ -59,7 +59,7 @@ public class RegisterController {
 		} else {			
 			map.add("message", "success");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<User>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		}
 		
 	}

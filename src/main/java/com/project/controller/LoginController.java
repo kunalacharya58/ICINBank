@@ -46,7 +46,6 @@ public class LoginController {
 			map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "invalid password");
-
 			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
@@ -54,8 +53,8 @@ public class LoginController {
 			// disabled account login attempt
 			allowed = false;
 			map = new LinkedMultiValueMap<>();
-			map.add("message", "Contact Administrator. Your account is not enabled.");
 			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "your account is not enabled");
 			return new ResponseEntity<User>(null, map, HttpStatus.UNAUTHORIZED);
 		}
 		
@@ -67,13 +66,12 @@ public class LoginController {
 			map.add("Access-Control-Expose-Headers", "userID");
 			map.add("message", "user active");
 			map.add("Access-Control-Expose-Headers", "message");
-			return new ResponseEntity<User>(null, map, HttpStatus.OK);
+			return new ResponseEntity<User>(user, map, HttpStatus.OK);
 		} else {
 			// authentication failed
 			map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "login failed");
-			map.add("Access-Control-Expose-Headers", "message");
 			return new ResponseEntity<User>(null, map, HttpStatus.NO_CONTENT);
 		}
 	}
