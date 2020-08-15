@@ -19,18 +19,16 @@ export class AuthService {
   login(data:any){
     let url = 'http://localhost:8080/login'
     data = JSON.stringify(data)
-    console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   register(data:any){
     let url = 'http://localhost:8080/register'
     data = JSON.stringify(data)
-    console.log(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   logout(){
-    localStorage.removeItem('userId')
+    sessionStorage.removeItem('userId')
   }
 }

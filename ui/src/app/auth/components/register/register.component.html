@@ -18,7 +18,7 @@
             <div class="form-group">
                 <input type="text" formControlName="username" id="username" class="form-input" placeholder="User ID" (input)="validateUserName()" required>
                 <div *ngFor="let error of validationErrorMessage.username">
-                    <div class="alert alert-danger error" *ngIf="error.isError">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
                         {{error.message}}
                     </div>
                 </div>
@@ -35,7 +35,7 @@
             <div class="form-group">
                 <input type="email" formControlName="email" id="email" class="form-input" placeholder="Email Address" (input)= "validateEmail()" required>
                 <div *ngFor="let error of validationErrorMessage.email">
-                    <div class="alert alert-danger error" *ngIf="error.isError">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
                         {{error.message}}
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             <div class="form-group">
                 <input type="tel" formControlName="phone" id="phone" class="form-input" placeholder="Contact Number" (keypress)= "numberOnly($event)" (input)= "validatePhone()"  required>
                 <div *ngFor="let error of validationErrorMessage.phone">
-                    <div class="alert alert-danger error" *ngIf="error.isError">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
                         {{error.message}}
                     </div>
                 </div>
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <input type="password" formControlName="password" id="password" class="form-input" placeholder="Password" (input)= "validatePassword()" required>
                 <div *ngFor="let error of validationErrorMessage.password">
-                    <div class="alert alert-danger error" *ngIf="error.isError">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
                         {{error.message}}
                     </div>
                 </div>
@@ -70,7 +70,7 @@
             <div class="form-group">
                 <input type="password" formControlName="confPass" id="confPass" class="form-input" placeholder="Confirm Password" (input)= "validateConfirmPassword()" required>
                 <div *ngFor="let error of validationErrorMessage.confPass">
-                    <div class="alert alert-danger error" *ngIf="error.isError">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
                         {{error.message}}
                     </div>
                 </div>
@@ -82,7 +82,7 @@
             </div>
 
         </form>
-        <div *ngIf="error" class="alert alert-danger error">
+        <div *ngIf="error" class="alert alert-danger error text-center">
           {{ errorMsg|titlecase }}
         </div>
     </section>
@@ -93,9 +93,6 @@
             © 2020 ICIN. All rights reserved.
         </div>
 
-        <a href="security.html" class="link-style">Security</a>
-        <a href="privacyAndCookies.html" class="link-style">Privacy and Cookies</a>
-        <a href="bankRegulatory.html" class="link-style">Bank Regulatory Information</a>
     </footer>
 
     </div>

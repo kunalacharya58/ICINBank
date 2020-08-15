@@ -11,7 +11,7 @@ export class DepositComponent implements OnInit {
   deposit = {
     accountType: [''],
     amount: [''],
-    userID: localStorage.getItem('userId'),
+    userID: sessionStorage.getItem('userId'),
   };
 
   error = false;
@@ -36,7 +36,7 @@ export class DepositComponent implements OnInit {
 
 
   submit() {
-    console.log(this.deposit);
+
     this.user.deposit(JSON.stringify(this.deposit)).subscribe(
       (resp) => {
         if (resp.ok) {

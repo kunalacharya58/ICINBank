@@ -12,6 +12,13 @@ import { TransactionComponent } from './user/components/transaction/transaction.
 import { PrimaryComponent } from './user/components/transaction/primary/primary.component';
 import { SavingsComponent } from './user/components/transaction/savings/savings.component';
 import { TransferComponent } from './user/components/transfer/transfer.component';
+import { AdminBaseComponent } from './admin/components/admin-base/admin-base.component';
+import { AdminHomeComponent } from './admin/components/admin-home/admin-home.component';
+import { AdminChequebookComponent } from './admin/components/admin-chequebook/admin-chequebook.component';
+import { PrivacyComponent } from './shared/component/privacy/privacy.component';
+import { SecurityComponent } from './shared/component/security/security.component';
+import { BankRegulationComponent } from './shared/component/bank-regulation/bank-regulation.component';
+import { AdminLoginComponent } from './admin/components/admin-login/admin-login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -32,8 +39,24 @@ const routes: Routes = [
         {path: 'savings', component:SavingsComponent}
       ] },
       { path: 'transfer', component: TransferComponent },
+      { path: 'privacy', component: PrivacyComponent},
+      { path: 'security', component: SecurityComponent},
+      { path: 'bank-regulatory', component: BankRegulationComponent}
     ],
   },
+  {
+    path: 'admin',
+    component: AdminBaseComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: AdminHomeComponent },
+      { path: 'chequebookrequest', component: AdminChequebookComponent},
+      { path: 'privacy', component: PrivacyComponent},
+      { path: 'security', component: SecurityComponent},
+      { path: 'bank-regulatory', component: BankRegulationComponent}
+    ],
+  },
+    { path:'admin-login', component:AdminLoginComponent },
 ];
 
 @NgModule({

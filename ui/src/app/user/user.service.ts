@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { User } from '../user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +19,18 @@ export class UserService {
 
   deposit(data:any){
     let url = 'http://localhost:8080/account/deposit'
-    console.log(data)
+
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   withdraw(data:any){
     let url = 'http://localhost:8080/account/withdraw'
-    console.log(data)
+
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   getUser():any{
-    let userId = localStorage.getItem('userId')
+    let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/user/"+userId
     return this.http.get<User>(url)
   }
@@ -38,10 +39,10 @@ export class UserService {
     let url = "http://localhost:8080/user/update"
     return this.http.put(url,user)
   }
-  
+
   requestCB(accountType : string){
-    let userId = localStorage.getItem('userId')
+    let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/chequebookrequest/"+accountType+"/"+userId
-    return this.http.get<HttpResponse<any>>(url,this.httpOptions);
+    return this.http.get<Observable<any>>(url,this.httpOptions);
   }
 }

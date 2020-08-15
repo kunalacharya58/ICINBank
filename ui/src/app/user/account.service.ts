@@ -7,30 +7,31 @@ import { JsonPipe } from '@angular/common';
   providedIn: 'root'
 })
 export class AccountService {
-  
+  getSavingsBalance() {
+    let userId = sessionStorage.getItem('userId')
+    let url = "http://localhost:8080/account/savings/"+userId
+    return this.http.get<any>(url)
+  }
+
+
+
   constructor(private http:HttpClient) { }
 
   getSavingsTransaction(){
-    let userId = localStorage.getItem('userId')
+    let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/transaction/savings/"+userId
     return this.http.get<Observable<any>>(url)
   }
 
   getPrimaryTransaction(){
-    let userId = localStorage.getItem('userId')
+    let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/transaction/primary/"+userId
     return this.http.get<Observable<any>>(url)
   }
 
-  getPrimaryBalance(){
-    let userId = localStorage.getItem('userId')
+  getPrimaryBalance(): any{
+    let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/account/primary/"+userId
-    return this.http.get<any>(url)
-  }
-
-  getSavingsBalance() {
-    let userId = localStorage.getItem('userId')
-    let url = "http://localhost:8080/account/savings/"+userId
     return this.http.get<any>(url)
   }
 

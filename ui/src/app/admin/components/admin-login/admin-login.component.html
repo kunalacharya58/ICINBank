@@ -1,0 +1,65 @@
+<div class="container-fluid">
+  <head>
+    <title>Login</title>
+ </head>
+
+<body>
+    <div class="row">
+
+        <div class="col-sm-6">
+            <img src="../../../../assets/css/images/Logo.png" alt="logo" class="logo">
+            <header >
+                <h1 class="heading-main">Login</h1>
+            </header>
+
+    <section class="section-padding">
+        <form [formGroup]="form" (ngSubmit)="validateFormAndSubmit()" action="POST" ngNativeValidate>
+            <div class="form-group">
+                <label for="lemail" class="form-label" >Customer ID</label><br>
+                <input type="text" id="lAdId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
+                <div class="alert alert-danger error text-center" *ngIf="usernameError">
+                    {{usernameErrorMessage}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lpass" class="form-label" >Password</label><br>
+                <input type="password" id="lpass" class="form-input"  formControlName="password" (input)= "validatePassword()" required  >
+                <div class="alert alert-danger error text-center" *ngIf="passError">
+                    {{passErrorMessage}}
+                </div>
+            </div>
+            <a href="" class="form-label" style="color:#909090; font-size: 15px;">Forgot Password?</a>
+
+            <div class="button-padding">
+                <button type="submit" class="button-style">Login</button>
+            </div>
+
+        </form>
+        <div *ngIf="error" class="alert alert-danger error text-center">
+          {{ errMsg|titlecase }}
+        </div>
+    </section>
+
+    <section class="section-padding">
+
+    </section>
+
+    <footer class="section-padding footer-font">
+        <div style="margin: 5% 0% 2% 0%;">
+            Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
+            © 2020 ICIN. All rights reserved.
+        </div>
+
+    </footer>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="bg">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</div>

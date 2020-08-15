@@ -14,7 +14,6 @@ export class SavingsComponent implements OnInit {
   ngOnInit(): void {
     this.acc.getSavingsTransaction().subscribe((resp) => {
       resp.forEach((item) => {
-        console.log(item)
         this.transactions.push(item);
       });
     });

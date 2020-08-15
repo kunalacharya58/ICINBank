@@ -30,7 +30,7 @@
                 {{ t.amount }}
               </td>
               <td>
-                <div class="col-md-6">{{t.availableBalance}}</div><span class="col-md-6" [ngClass]="{'deposit': (t.type === 'Deposit'),'withdraw': (t.type === 'Withdraw')}"></span>
+                {{t.availableBalance}}
               </td>
             </tr>
           </tbody>
