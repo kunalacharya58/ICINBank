@@ -16,19 +16,28 @@ export class TransferComponent implements OnInit {
   errMsg = ''
   err = false
   success = false
+
   selfTransfer = {
     accountType: '',
     amount: '',
   }
 
-
-
+  sameTransfer = {
+    fromAccountType: '',
+    toAccountType: '',
+    username: '',
+    amount: '',
+  }
 
   otherTransfer = {
-    type: '',
+    bankName: '',
+    accountType: '',
     amount: '',
-    accNo: '',
+    accountNo: '',
+    bankBranch: '',
+    IFSC: '',
   }
+
   selectValue(){
     if(this.selection === "self"){
       this.self = true;
@@ -45,9 +54,17 @@ export class TransferComponent implements OnInit {
     }
   }
 
-  submitSelf(){
-    if(this.selfTransfer.amount !== '' && this.selfTransfer.accountType !== ''){
+  checkAllFields(form){
+    for(let field in form){
+      if(form[field] === '' || form[field] === null){
+        return false
+      }
+    }
+    return true
+  }
 
+  submitSelf(){
+    if(this.checkAllFields(this.selfTransfer)){
       this.selfTransfer['userID'] = sessionStorage.getItem('userId');
       this.acc.sendSelf(this.selfTransfer).subscribe(
         (resp) => {
@@ -61,6 +78,18 @@ export class TransferComponent implements OnInit {
           this.errMsg = err.headers.get('message')
         }
       )
+    }
+  }
+
+  submitSame(){
+    if(this.checkAllFields(this.sameTransfer)){
+      console.log(this.sameTransfer)
+    }
+  }
+
+  submitOther(){
+    if(this.checkAllFields(this.otherTransfer)){
+      console.log(this.otherTransfer)
     }
   }
 
