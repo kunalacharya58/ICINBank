@@ -71,6 +71,7 @@ export class TransferComponent implements OnInit {
           this.err = false
           this.success = true
           this.errMsg = resp.headers.get('message')
+          this.selfTransfer.amount = ''
         },
         (err) => {
           this.err = true
@@ -91,6 +92,7 @@ export class TransferComponent implements OnInit {
           this.err = false
           this.success = true
           this.errMsg = resp.headers.get('message')
+          this.sameTransfer.amount = ''
         },
         (err) => {
           this.err = true
@@ -123,6 +125,8 @@ export class TransferComponent implements OnInit {
   }
 
   numberOnly(event): boolean {
+    this.err =false
+    this.success = false
     const charCode = event.which ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       return false;
