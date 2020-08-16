@@ -7,6 +7,9 @@ public interface UserService {
 	public User updateUser(User user);
 	public void deleteUserbyId(long id);
 	
+	public void enableUser(long id);
+	public void disableUser(long id);
+	
 	public Iterable<User> getAllUsers();
 	public User getUserById(long id);
 	public User getUserByEmail(String email);
