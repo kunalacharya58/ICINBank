@@ -55,9 +55,8 @@ export class AccountService {
 
   sendOther(data){
     data = JSON.stringify(data)
-    // let url = "http://localhost:8080/transfer"
-    // return this.http.post(url,data,this.httpOptions)
-    return null
+    let url = "http://localhost:8080/transfer/"
+    return this.http.post(url,data,this.httpOptions)
   }
 
 }

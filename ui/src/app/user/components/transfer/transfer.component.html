@@ -287,5 +287,12 @@
     <div class="col-sm-3 alert alert-success text-center error" *ngIf="success">
       {{ errMsg | titlecase }}
     </div>
+    <br>
+    
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-3 alert alert-success text-center error" *ngIf="success && other">
+      {{ otherMsg | uppercase }}
+    </div>
   </div>
 </div>

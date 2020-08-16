@@ -16,7 +16,7 @@ export class TransferComponent implements OnInit {
   errMsg = ''
   err = false
   success = false
-
+  otherMsg = ''
   selfTransfer = {
     accountType: '',
     amount: '',
@@ -37,6 +37,8 @@ export class TransferComponent implements OnInit {
     amount: '',
     transferType: ''
   }
+
+  
 
   selectValue(){
     if(this.selection === "self"){
@@ -114,6 +116,8 @@ export class TransferComponent implements OnInit {
           this.err = false
           this.success = true
           this.errMsg = resp.headers.get('message')
+          this.otherTransfer.amount = '';
+          this.otherMsg = "Sent to "+this.otherTransfer.toUsername+" | BK : " + this.otherTransfer.toAccount;
         },
         (err) => {
           this.err = true
