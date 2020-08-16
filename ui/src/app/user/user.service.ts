@@ -45,4 +45,10 @@ export class UserService {
     let url = "http://localhost:8080/chequebookrequest/"+accountType+"/"+userId
     return this.http.get<Observable<any>>(url,this.httpOptions);
   }
+
+  checkRequest(){
+    let userId = sessionStorage.getItem('userId')
+    let url = "http://localhost:8080/chequebookrequest/pending/requestedBy/"+userId
+    return this.http.get<Observable<any>>(url)
+  }
 }

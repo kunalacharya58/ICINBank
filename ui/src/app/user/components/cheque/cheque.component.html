@@ -1,5 +1,11 @@
 <section class="section-padding section-padding-deposit">
   <h3 class="heading-main">Cheque Book Request</h3>
+  <div class="row">
+    <div *ngIf="(pending.primary || pending.savings)" class="col-sm-7 alert alert-info error text-center error">
+      {{ requestMsg | titlecase | slice:0:-1 }}
+    </div>
+  </div>
+
   <div class="radio">
       <label class="deposit-label" style="font-weight: bold; margin-left: 6%;">Account Type</label>
       <label class="radio-inline deposit-label"><input type="radio" [(ngModel)]="accoutType" value= "primary" name="accountSelect" checked>Primary</label>
@@ -7,7 +13,7 @@
 
 
     <div style="margin-left: 20%;">
-        <button type="button" class="button-style button-padding" style="margin-left: 2%;" (click) = "submit()">Request</button>
+        <button type="button" class="button-style button-padding" style="margin-left: 2%;" (click) = "submit()" [disabled]="((pending.primary && pending.savings) || disable)">Request</button>
     </div>
     <div *ngIf="error" class="col-sm-7 alert alert-danger error text-center error">
       {{ errorMsg | titlecase }}
