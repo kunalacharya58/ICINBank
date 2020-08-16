@@ -60,8 +60,35 @@ public class TransferServiceImpl implements TransferService {
 
 	@Override
 	public void otherBankTransfer(FundTransferSlip slip) {
-		// TODO Auto-generated method stub
+		String fromAccount = slip.getFromAccount();
+		double amount = slip.getAmount();
 		
+		String accountNumber = slip.getToUsername();
+		String bankName = slip.getToAccount();
+		
+		String description = "Sent to ACC-"+accountNumber+"|BK-"+bankName;
+		
+		if(fromAccount.equalsIgnoreCase("primary")) {
+			PrimaryAccount primaryAccount = userService.getUserById(slip.getUserID()).getPrimaryAccount();
+			primaryAccount.setBalance(primaryAccount.getBalance() - amount);
+			
+			PrimaryTransaction primaryTransaction
+				= new PrimaryTransaction(new Date(), description, "Fund Transfer", amount, primaryAccount.getBalance(), primaryAccount);
+			
+			accountService.savePrimaryAccount(primaryAccount);
+			transactionService.savePrimaryTransaction(primaryTransaction);
+			
+		} else {
+			SavingsAccount savingsAccount = userService.getUserById(slip.getUserID()).getSavingsAccount();
+			savingsAccount.setBalance(savingsAccount.getBalance() - amount);
+			
+			SavingsTransaction savingsTransaction
+				= new SavingsTransaction(new Date(), description, "Fund Transfer", amount, savingsAccount.getBalance(), savingsAccount);
+			
+			accountService.saveSavingsAccount(savingsAccount);
+			transactionService.saveSavingsTransaction(savingsTransaction);
+			
+		}
 	}
 
 	@Override

@@ -32,6 +32,8 @@ public class TransferController {
 	@PostMapping("/")
 	public ResponseEntity<String> fundTransfer(@RequestBody FundTransferSlip slip) {
 		
+		double transactionLimit = 20000;
+		
 		// check user
 		User user = userService.getUserById(slip.getUserID());
 		if(user == null) {
@@ -44,6 +46,12 @@ public class TransferController {
 		// check user balance before initiating the transfer
 		double balance = 0;
 		double amount = slip.getAmount();
+		if(amount > transactionLimit) {
+			map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "transfer limit exceeded");
+			return new ResponseEntity<>(null, map, HttpStatus.FORBIDDEN); 
+		}
 		if(slip.getFromAccount().equalsIgnoreCase("primary")) {
 			balance = user.getPrimaryAccount().getBalance();
 		} else {
