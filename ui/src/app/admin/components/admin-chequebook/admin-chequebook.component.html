@@ -15,8 +15,26 @@
           </tr>
         </thead>
         <tbody class="table-body-style">
-          <tr>
-
+          <tr *ngFor="let cb of checkBooks;" class="text-center">
+            <td>
+              {{cb.username}}
+            </td>
+            <td>
+              {{cb.accountType}}
+            </td>
+            <td>
+              {{cb.accountNumber}}
+            </td>
+            <td>
+              {{cb.requestDate | date}}
+            </td>
+            <td>
+              {{cb.confirmed}}
+            </td>
+            <td>
+              <a href="javascript:void(0)" *ngIf = "!cb.confirmed" (click)= "approveCB(cb.id);" >Approve</a>
+              <div *ngIf = "cb.confirmed" >Approved</div>
+            </td>
           </tr>
         </tbody>
       </table>

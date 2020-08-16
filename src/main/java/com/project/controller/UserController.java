@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.project.model.User;
 import com.project.service.UserService;
 
@@ -55,9 +56,38 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public  ResponseEntity<User> getUserById(@PathVariable("id") long id) {
+	public  User getUserById(@PathVariable("id") long id) {
 		// TODO Auto-generated method stub
-		return new ResponseEntity<User>(service.getUserById(id),HttpStatus.OK);
+		return service.getUserById(id);
+	}
+	@PostMapping("/enable/{id}")
+	public ResponseEntity<String> enableUser(@PathVariable long id ) {
+		if (getUserById(id) == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
+		}
+		service.enableUser(id);
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(null, map, HttpStatus.OK);
+	}
+	
+	@PostMapping("/disable/{id}")
+	public ResponseEntity<String> disableUser(@PathVariable long id ) {
+		if (getUserById(id) == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
+		}
+		service.disableUser(id);
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(null, map, HttpStatus.OK);
 	}
 	
 	@PostMapping("/enable/{id}")

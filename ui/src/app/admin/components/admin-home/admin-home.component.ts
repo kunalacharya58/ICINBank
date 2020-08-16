@@ -26,4 +26,19 @@ export class AdminHomeComponent implements OnInit {
     )
   }
 
+  userStatus(user){
+    if(user.enabled)
+      this.adserve.disableUser(user.id).subscribe(
+        res=>{
+          console.log(res)
+        }
+      )
+    else(status)
+      this.adserve.enableUser(user.id).subscribe(
+        res=>{
+          console.log(res)
+        }
+      )
+   user.enabled = !user.enabled
+  }
 }
