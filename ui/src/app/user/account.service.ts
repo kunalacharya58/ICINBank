@@ -7,14 +7,7 @@ import { JsonPipe } from '@angular/common';
   providedIn: 'root'
 })
 export class AccountService {
-  getSavingsBalance() {
-    let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/account/savings/"+userId
-    return this.http.get<any>(url)
-  }
-
-
-
+ 
   constructor(private http:HttpClient) { }
 
   getSavingsTransaction(){
@@ -32,6 +25,12 @@ export class AccountService {
   getPrimaryBalance(): any{
     let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/account/primary/"+userId
+    return this.http.get<any>(url)
+  }
+
+  getSavingsBalance() {
+    let userId = sessionStorage.getItem('userId')
+    let url = "http://localhost:8080/account/savings/"+userId
     return this.http.get<any>(url)
   }
 

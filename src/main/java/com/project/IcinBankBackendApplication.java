@@ -45,8 +45,7 @@ public class IcinBankBackendApplication  {
 		
 	// 	accServ.deposit(2500, "primary", user.getId());
 	// 	accServ.deposit(3000, "savings", user.getId());
-		
-	// 	accServ.withdraw(300, "primary", user.getId());
+			// 	accServ.withdraw(300, "primary", user.getId());
 	// 	accServ.withdraw(500, "savings", user.getId());
 		
 	// 	ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
@@ -56,5 +55,5 @@ public class IcinBankBackendApplication  {
 	// 	cbrServ.confirmRequest(cbrPrimary.getId());
 	// 	cbrServ.confirmRequest(cbrSavings.getId());
 	// }
-}
+//}
 

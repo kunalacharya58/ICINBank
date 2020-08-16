@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,6 +21,21 @@ export class AdminService {
     return this.http.get<Observable<any>>(url)
   }
 
+  getCheckBookRequests(){
+    let url = 'http://localhost:8080/chequebookrequest/all'
+    return this.http.get<Observable<any>>(url)
+  }
+
+  getPrimaryAccount(id: number) {
+    let url = "http://localhost:8080/account/primary/"+id
+    return this.http.get<any>(url)
+  }
+
+  getSavingsAccount(id: number) {
+    let url = "http://localhost:8080/account/savings/"+id
+    return this.http.get<any>(url)
+  }
+
   login(data){
     data = JSON.stringify(data)
     let url = 'http://localhost:8080/admin/login'
@@ -30,4 +45,10 @@ export class AdminService {
   logout(){
     sessionStorage.removeItem('adminId')
   }
+
+  confirmRequest(id :number){
+    let url = 'http://localhost:8080/chequebookrequest/confirm/'+id
+    return this.http.post(url,null,this.httpOptions)
+  }
+
 }
