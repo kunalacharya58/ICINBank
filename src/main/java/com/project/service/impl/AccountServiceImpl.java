@@ -175,4 +175,14 @@ public class AccountServiceImpl implements AccountService {
 		transactionService.saveSavingsTransaction(savingsTransaction);
 	}
 
+	@Override
+	public void savePrimaryAccount(PrimaryAccount primaryAccount) {
+		primaryAccountDao.save(primaryAccount);
+	}
+
+	@Override
+	public void saveSavingsAccount(SavingsAccount savingsAccount) {
+		savingsAccountDao.save(savingsAccount);
+	}
+
 }
