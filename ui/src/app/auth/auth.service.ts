@@ -31,4 +31,9 @@ export class AuthService {
   logout(){
     sessionStorage.removeItem('userId')
   }
+
+  disableUser( username : string ) {
+    let url = 'http://localhost:8080/user/disable/username/'+username
+    return this.http.post(url,null,this.httpOptions)
+  }
 }
