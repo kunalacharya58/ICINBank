@@ -15,7 +15,7 @@
     <section class="section-padding">
         <form [formGroup]="form" (ngSubmit)="validateFormAndSubmit()" action="POST" ngNativeValidate>
             <div class="form-group">
-                <label for="lemail" class="form-label" >Customer ID</label><br>
+                <label for="lemail" class="form-label" >Admin ID</label><br>
                 <input type="text" id="lAdId" class="form-input" formControlName="username" (input)= "validateUserName()" required>
                 <div class="alert alert-danger error text-center" *ngIf="usernameError">
                     {{usernameErrorMessage}}

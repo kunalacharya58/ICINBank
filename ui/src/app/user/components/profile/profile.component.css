@@ -17,3 +17,9 @@
   border: transparent;
   border-radius: 50px;
 }
+
+.heading-main{
+  margin-left: 45%;
+  font-family: "montserrat";
+  font-size: x-large;
+}
