@@ -49,14 +49,15 @@ export class AccountService {
 
   sendSame(data){
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/account/exchange"
+    let url = "http://localhost:8080/transfer/"
     return this.http.post(url,data,this.httpOptions)
   }
 
   sendOther(data){
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/account/exchange"
-    return this.http.post(url,data,this.httpOptions)
+    // let url = "http://localhost:8080/transfer"
+    // return this.http.post(url,data,this.httpOptions)
+    return null
   }
 
 }

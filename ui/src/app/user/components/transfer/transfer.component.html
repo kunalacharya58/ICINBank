@@ -100,7 +100,7 @@
           type="radio"
           name="fromtransactionType"
           value="Primary"
-          [(ngModel)]="sameTransfer.fromAccountType"
+          [(ngModel)]="sameTransfer.fromAccount"
         />Primary</label
       >
       <label class="radio-inline transfer-label" style="padding-left: 60px;"
@@ -108,7 +108,7 @@
           type="radio"
           name="fromtransactionType"
           value="Savings"
-          [(ngModel)]="sameTransfer.fromAccountType"
+          [(ngModel)]="sameTransfer.fromAccount"
         />Savings</label
       >
     </div>
@@ -121,7 +121,7 @@
           type="radio"
           name="rotransactionType"
           value="Primary"
-          [(ngModel)]="sameTransfer.toAccountType"
+          [(ngModel)]="sameTransfer.toAccount"
         />Primary</label
       >
       <label class="radio-inline transfer-label" style="padding-left: 60px;"
@@ -129,7 +129,7 @@
           type="radio"
           name="totransactionType"
           value="Savings"
-          [(ngModel)]="sameTransfer.toAccountType"
+          [(ngModel)]="sameTransfer.toAccount"
         />Savings</label
       >
     </div>
@@ -144,7 +144,7 @@
           class="transfer-label"
           type="text"
           placeholder="Enter username"
-          [(ngModel)]="sameTransfer.username"
+          [(ngModel)]="sameTransfer.toUsername"
         />
       </div>
       <div>
@@ -188,7 +188,7 @@
           class="transfer-label"
           type="text"
           placeholder="Enter the Bank Name"
-          [(ngModel)]="otherTransfer.bankName"
+          [(ngModel)]="otherTransfer.toAccount"
         />
       </div>
 
@@ -199,10 +199,10 @@
           >Account Type</label
         >
         <label class="radio-inline transfer-label"
-          ><input type="radio" name="accountSelect" [(ngModel)]="otherTransfer.accountType" value="Primary" />Primary</label
+          ><input type="radio" name="accountSelect" [(ngModel)]="otherTransfer.fromAccount" value="Primary" />Primary</label
         >
         <label class="radio-inline transfer-label" style="padding-left: 30px;"
-          ><input type="radio" name="accountSelect" [(ngModel)]="otherTransfer.accountType" value="Savings" />Savings</label
+          ><input type="radio" name="accountSelect" [(ngModel)]="otherTransfer.fromAccount" value="Savings" />Savings</label
         >
       </div>
 
@@ -217,7 +217,6 @@
           class="transfer-label"
           type="text"
           placeholder="Enter the Bank Branch"
-          [(ngModel)]="otherTransfer.bankBranch"
         />
       </div>
 
@@ -231,7 +230,6 @@
           class="transfer-label"
           type="text"
           placeholder="Enter the IFSC Code"
-          [(ngModel)]="otherTransfer.IFSC"
         />
       </div>
 
@@ -262,7 +260,7 @@
           class="transfer-label"
           type="text"
           (keypress)="numberOnly($event)"
-          [(ngModel)]="otherTransfer.accountNo"
+          [(ngModel)]="otherTransfer.toUsername"
           placeholder="Enter the Account Number"
         />
       </div>

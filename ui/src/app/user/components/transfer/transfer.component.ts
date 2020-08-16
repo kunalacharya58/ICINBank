@@ -23,19 +23,19 @@ export class TransferComponent implements OnInit {
   }
 
   sameTransfer = {
-    fromAccountType: '',
-    toAccountType: '',
-    username: '',
+    fromAccount: '',
+    toAccount: '',
+    toUsername: '',
     amount: '',
+    transferType: ''
   }
 
   otherTransfer = {
-    bankName: '',
-    accountType: '',
+    fromAccount: '',
+    toAccount: '',
+    toUsername: '',
     amount: '',
-    accountNo: '',
-    bankBranch: '',
-    IFSC: '',
+    transferType: ''
   }
 
   selectValue(){
@@ -82,6 +82,7 @@ export class TransferComponent implements OnInit {
   }
 
   submitSame(){
+    this.sameTransfer.transferType = "same"
     if(this.checkAllFields(this.sameTransfer)){
       console.log(this.sameTransfer)
       this.sameTransfer['userID'] = sessionStorage.getItem('userId');
@@ -101,6 +102,8 @@ export class TransferComponent implements OnInit {
   }
 
   submitOther(){
+    console.log(this.otherTransfer)
+    this.otherTransfer.transferType="other"
     if(this.checkAllFields(this.otherTransfer)){
       console.log(this.otherTransfer)
       this.otherTransfer['userID'] = sessionStorage.getItem('userId');
