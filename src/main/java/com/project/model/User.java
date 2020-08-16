@@ -46,7 +46,7 @@ public class User {
 	private String address;
 	
 	//hidden attributes
-	private boolean enabled = true;
+	private boolean enabled = false;
 	
 	@OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JsonIgnore
