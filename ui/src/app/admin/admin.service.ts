@@ -51,4 +51,13 @@ export class AdminService {
     return this.http.post(url,null,this.httpOptions)
   }
 
+  enableUser( id : number ) {
+    let url = 'http://localhost:8080/user/enable/'+id
+    return this.http.post(url,null,this.httpOptions)
+  }
+  disableUser( id : number ) {
+    let url = 'http://localhost:8080/user/disable/'+id
+    return this.http.post(url,null,this.httpOptions)
+  }  
+
 }

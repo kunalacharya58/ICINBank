@@ -33,9 +33,9 @@ public class UserController {
 	}
 
 	@PutMapping("/update")
-	public User updateUser(@RequestBody User user) {
-		// TODO Auto-generated method stub
-		return service.updateUser(user);
+//	public User updateUser(@RequestBody User user) {
+//		// TODO Auto-generated method stub
+//		return service.updateUser(user);
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		long id = user.getId();
 		User newUser = getUserById(id);
@@ -59,10 +59,10 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public  ResponseEntity<User> getUserById(@PathVariable("id") long id) {
+	public  User getUserById(@PathVariable("id") long id) {
 		// TODO Auto-generated method stub
-		return new ResponseEntity<User>(service.getUserById(id),HttpStatus.OK);
-	
+		return service.getUserById(id);
+	}
 	@PostMapping("/enable/{id}")
 	public ResponseEntity<String> enableUser(@PathVariable long id ) {
 		if (getUserById(id) == null) {
