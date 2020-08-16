@@ -1,35 +1,28 @@
-
 /* .navbar navbar-default{
   background-color: white;
   border: none;
 } */
-.logo{
+.logo {
   /* height : -%; */
   margin-left: 0%;
 }
 
-
-.display-balance{
+.display-balance {
   margin: 2%;
 }
 
-
-
 .form-input {
-    border-width: 0px 0px 1px 0px;
-    width: 100%;
-    padding : 2%;
-    color: #0E0e10;
+  border-width: 0px 0px 1px 0px;
+  width: 100%;
+  padding: 2%;
+  color: #0e0e10;
 }
 
-
-
-.footer-font{
-    font-family: Verdana;
-    font-size: 12px;
-    color : #909090;
+.footer-font {
+  font-family: Verdana;
+  font-size: 12px;
+  color: #909090;
 }
-
 
 .column {
   float: left;
@@ -53,16 +46,15 @@
   clear: both;
 }
 
-  /* Full height */
+/* Full height */
 
-
-.home-opt{
+.home-opt {
   font-size: 25px;
-   color: #212121;
-   padding: 20%;
+  color: #212121;
+  padding: 20%;
 }
-.link-style{
-  color:#6b6b6b;
+.link-style {
+  color: #6b6b6b;
   padding-right: 3%;
 }
 
@@ -74,7 +66,7 @@
   background-size: cover;
 }
 
-.navbar{
+.navbar {
   list-style-type: none;
   overflow: hidden;
   background-color: white;
@@ -89,9 +81,8 @@
   text-align: center;
   padding: 14px 15px;
   font-size: 20px;
-  font-family : "Libre Baskerville";
+  font-family: "Libre Baskerville";
   text-decoration: none;
-
 }
 
 .navbar a:hover {
@@ -99,20 +90,20 @@
   text-decoration: none;
 }
 
-.section-padding{
+.section-padding {
   padding-left: 5%;
 }
 
-.footer-font{
+.footer-font {
   font-family: Verdana;
   font-size: 12px;
-  color : #909090;
+  color: #909090;
 }
 
-.button-style{
-  color:#bfbfbf ;
+.button-style {
+  color: #bfbfbf;
   background-color: #212121;
-  padding : 1% 5% 1% 5%;
+  padding: 1% 5% 1% 5%;
   text-align: center;
   font-size: 20px;
   font-family: "montserrat";
@@ -124,10 +115,10 @@
 
 } */
 .new-bg {
-width:100%;
-height: 100vh;
+  width: 100%;
+  height: 100vh;
 }
-
-html,body {
+html,
+body {
   height: 100% !important;
 }

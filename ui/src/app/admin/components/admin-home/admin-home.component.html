@@ -29,7 +29,7 @@
             </td>
             <td>
               <a href="javascript:void(0)" *ngIf = "!user.enabled" (click) = "userStatus(user)" style="color: red;">Disabled</a>
-              <a href="javascript:void(0)" *ngIf = "user.enabled" (click) = "userStatus(user)">Enabled</a>
+              <a href="javascript:void(0)" *ngIf = "user.enabled" (click) = "userStatus(user)" style="color: green;">Enabled</a>
             </td>
           </tr>
         </tbody>

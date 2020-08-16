@@ -33,7 +33,7 @@
             </td>
             <td>
               <a href="javascript:void(0)" *ngIf = "!cb.confirmed" (click)= "approveCB(cb.id);" >Approve</a>
-              <div *ngIf = "cb.confirmed" >Approved</div>
+              <div *ngIf = "cb.confirmed" style="color:green;">Approved</div>
             </td>
           </tr>
         </tbody>
