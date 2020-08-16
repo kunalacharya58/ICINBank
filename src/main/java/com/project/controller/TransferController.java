@@ -67,14 +67,24 @@ public class TransferController {
 				return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND); 
 			}
 			transferService.sameBankTransfer(slip);
-			
+			map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "success");
+			return new ResponseEntity<>(null, map, HttpStatus.OK);
 		}
 		
 		//other bank transfer
 		else if(transferType.equalsIgnoreCase("other")) {
 			transferService.otherBankTransfer(slip);
+			map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "success");
+			return new ResponseEntity<>(null, map, HttpStatus.OK);
 		}
 		
-		return null;
+		map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "system error");
+		return new ResponseEntity<>(null, map, HttpStatus.NO_CONTENT);
 	}
 }
