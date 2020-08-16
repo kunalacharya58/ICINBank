@@ -25,15 +25,26 @@ public class UserController {
 	UserService service;
 	
 	@DeleteMapping("/{id}")
-	public void deleteUserbyId(@PathVariable("id") long id) {
-		// TODO Auto-generated method stub
+	public ResponseEntity<String> deleteUserbyId(@PathVariable("id") long id) {
+		User newUser = service.getUserById(id);
+		if (newUser == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
+		}
 		service.deleteUserbyId(id);
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(null, map, HttpStatus.OK); 
+		
 	}
 
 	@PutMapping("/update")
 	public ResponseEntity<User> updateUser(@RequestBody User user) {
 		long id = user.getId();
-		User newUser = getUserById(id);
+		User newUser = service.getUserById(id);
 		if (newUser == null) {
 			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
@@ -54,14 +65,38 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable("id") long id) {
-		// TODO Auto-generated method stub
-		return service.getUserById(id);
+	public ResponseEntity<User> getUserById(@PathVariable("id") long id) {
+		User user = service.getUserById(id);
+		if (user == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(user, map, HttpStatus.NOT_FOUND);
+		}
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(user, map, HttpStatus.OK);
+	}
+	
+	@GetMapping("username/{username}")
+	public ResponseEntity<User> getUserByUsername(@PathVariable("username") String username) {
+		User user = service.getUserByUsername(username);
+		if (user == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(user, map, HttpStatus.NOT_FOUND);
+		}
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(user, map, HttpStatus.OK);
 	}
 	
 	@PostMapping("/enable/{id}")
-	public ResponseEntity<String> enableUser(@PathVariable long id ) {
-		if (getUserById(id) == null) {
+	public ResponseEntity<String> enableUser(@PathVariable("id") long id ) {
+		if (service.getUserById(id) == null) {
 			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
@@ -75,14 +110,46 @@ public class UserController {
 	}
 	
 	@PostMapping("/disable/{id}")
-	public ResponseEntity<String> disableUser(@PathVariable long id ) {
-		if (getUserById(id) == null) {
+	public ResponseEntity<String> disableUser(@PathVariable("id") long id ) {
+		if (service.getUserById(id) == null) {
 			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 			map.add("Access-Control-Expose-Headers", "message");
 			map.add("message", "user not found");
 			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
 		}
 		service.disableUser(id);
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(null, map, HttpStatus.OK);
+	}
+	
+	@PostMapping("/enable/username/{username}")
+	public ResponseEntity<String> enableUserByUsername(@PathVariable("username") String username ) {
+		User user = service.getUserByUsername(username);
+		if (user == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
+		}
+		service.enableUser(user.getId());
+		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+		map.add("Access-Control-Expose-Headers", "message");
+		map.add("message", "success");
+		return new ResponseEntity<>(null, map, HttpStatus.OK);
+	}
+	
+	@PostMapping("/disable/username/{username}")
+	public ResponseEntity<String> disableUserByUsername(@PathVariable("username") String username ) {
+		User user = service.getUserByUsername(username);
+		if (user == null) {
+			MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
+			map.add("Access-Control-Expose-Headers", "message");
+			map.add("message", "user not found");
+			return new ResponseEntity<>(null, map, HttpStatus.NOT_FOUND);
+		}
+		service.disableUser(user.getId());
 		MultiValueMap<String,String> map = new LinkedMultiValueMap<>();
 		map.add("Access-Control-Expose-Headers", "message");
 		map.add("message", "success");
