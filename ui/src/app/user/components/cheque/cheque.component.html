@@ -6,10 +6,10 @@
     </div>
   </div>
 
-  <div class="radio">
+  <div class="radio" >
       <label class="deposit-label" style="font-weight: bold; margin-left: 6%;">Account Type</label>
-      <label class="radio-inline deposit-label"><input type="radio" [(ngModel)]="accoutType" value= "primary" name="accountSelect" checked>Primary</label>
-      <label class="radio-inline deposit-label"><input type="radio" [(ngModel)]="accoutType" value= "savings" name="accountSelect">Savings</label>
+      <label class="radio-inline deposit-label" [ngClass]="{'red': true === pending.primary,'green':true}"><input type="radio" [(ngModel)]="accoutType" value= "primary" name="accountSelect" [disabled]="pending.primary">Primary</label>
+      <label class="radio-inline deposit-label" [ngClass]="{'red': true === pending.savings,'green':true}"><input type="radio" [(ngModel)]="accoutType" value= "savings" name="accountSelect" [disabled]="pending.savings">Savings</label>
 
 
     <div style="margin-left: 20%;">

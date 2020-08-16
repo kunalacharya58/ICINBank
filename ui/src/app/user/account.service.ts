@@ -10,6 +10,13 @@ export class AccountService {
 
   constructor(private http:HttpClient) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':'application/json; charset=UTF-8',
+    }),
+    observe: 'response' as 'response',
+  };
+
   getSavingsTransaction(){
     let userId = sessionStorage.getItem('userId')
     let url = "http://localhost:8080/transaction/savings/"+userId
@@ -35,15 +42,21 @@ export class AccountService {
   }
 
   sendSelf(data) {
-    let httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':'application/json; charset=UTF-8',
-      }),
-      observe: 'response' as 'response',
-    };
     data = JSON.stringify(data)
     let url = "http://localhost:8080/account/exchange"
-    return this.http.post(url,data,httpOptions)
+    return this.http.post(url,data,this.httpOptions)
+  }
+
+  sendSame(data){
+    data = JSON.stringify(data)
+    let url = "http://localhost:8080/account/exchange"
+    return this.http.post(url,data,this.httpOptions)
+  }
+
+  sendOther(data){
+    data = JSON.stringify(data)
+    let url = "http://localhost:8080/account/exchange"
+    return this.http.post(url,data,this.httpOptions)
   }
 
 }

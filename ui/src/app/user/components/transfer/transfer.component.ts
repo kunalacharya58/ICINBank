@@ -84,12 +84,38 @@ export class TransferComponent implements OnInit {
   submitSame(){
     if(this.checkAllFields(this.sameTransfer)){
       console.log(this.sameTransfer)
+      this.sameTransfer['userID'] = sessionStorage.getItem('userId');
+      this.acc.sendSame(this.sameTransfer).subscribe(
+        (resp) => {
+          this.err = false
+          this.success = true
+          this.errMsg = resp.headers.get('message')
+        },
+        (err) => {
+          this.err = true
+          this.success = false
+          this.errMsg = err.headers.get('message')
+        }
+      )
     }
   }
 
   submitOther(){
     if(this.checkAllFields(this.otherTransfer)){
       console.log(this.otherTransfer)
+      this.otherTransfer['userID'] = sessionStorage.getItem('userId');
+      this.acc.sendOther(this.otherTransfer).subscribe(
+        (resp) => {
+          this.err = false
+          this.success = true
+          this.errMsg = resp.headers.get('message')
+        },
+        (err) => {
+          this.err = true
+          this.success = false
+          this.errMsg = err.headers.get('message')
+        }
+      )
     }
   }
 

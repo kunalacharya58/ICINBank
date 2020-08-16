@@ -262,6 +262,7 @@
           class="transfer-label"
           type="text"
           (keypress)="numberOnly($event)"
+          [(ngModel)]="otherTransfer.accountNo"
           placeholder="Enter the Account Number"
         />
       </div>
