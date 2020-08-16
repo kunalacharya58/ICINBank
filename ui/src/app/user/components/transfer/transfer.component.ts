@@ -10,6 +10,7 @@ export class TransferComponent implements OnInit {
 
   constructor(private acc:AccountService) { }
   self = false;
+  same = false
   other = false;
   selection = ''
   errMsg = ''
@@ -20,6 +21,9 @@ export class TransferComponent implements OnInit {
     amount: '',
   }
 
+
+
+
   otherTransfer = {
     type: '',
     amount: '',
@@ -28,10 +32,16 @@ export class TransferComponent implements OnInit {
   selectValue(){
     if(this.selection === "self"){
       this.self = true;
+      this.same =false
+      this.other = false;
+    } else if(this.selection === "same") {
+      this.same = true;
+      this.self = false;
       this.other = false;
     } else {
-      this.self = false;
       this.other = true;
+      this.self = false;
+      this.same = false;
     }
   }
 

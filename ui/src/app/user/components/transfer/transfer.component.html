@@ -2,7 +2,8 @@
   <h3 class="heading-main" style="padding-left: 2%; padding-bottom: 2%;">
     Fund Transfer
   </h3>
-
+  <!-- self same or other -->
+  <!---------------------------------------------------------------------------------------------------->
   <div class="radio">
     <label class="transfer-label" style="font-weight: bold; margin-right: 1%;"
       >Account Type</label
@@ -22,11 +23,21 @@
         name="transactionType"
         (change)="selectValue()"
         [(ngModel)]="selection"
+        value="same"
+      />Same Bank</label
+    >
+    <label class="radio-inline transfer-label" style="padding-left: 60px;"
+      ><input
+        type="radio"
+        name="transactionType"
+        (change)="selectValue()"
+        [(ngModel)]="selection"
         value="other"
-      />Other</label
+      />Other Bank</label
     >
   </div>
-
+  <!-- for self -->
+  <!---------------------------------------------------------------------------------------------------->
   <div id="form-1" [hidden]="!self">
     <div class="radio">
       <label class="deposit-label" style="font-weight: bold;"
@@ -51,9 +62,7 @@
       >
     </div>
     <div>
-      <label
-        class="transfer-label"
-        style="font-weight: bold;"
+      <label class="transfer-label" style="font-weight: bold;"
         >Enter Amount
       </label>
       <input
@@ -78,7 +87,88 @@
       </button>
     </div>
   </div>
-
+  <!-- for same -->
+  <!---------------------------------------------------------------------------------------------------->
+  <div id="form-2" [hidden]="!same">
+    <section class="transfer-other">
+    <div>
+      <label class="transfer-label" style="font-weight: bold; margin-right: 1%;"
+        >From Account Type</label
+      >
+      <label class="radio-inline transfer-label"
+        ><input
+          type="radio"
+          name="transactionType"
+          value="Primary"
+        />Primary</label
+      >
+      <label class="radio-inline transfer-label" style="padding-left: 60px;"
+        ><input
+          type="radio"
+          name="transactionType"
+          value="Savings"
+        />Savings</label
+      >
+    </div>
+    <div>
+      <label class="transfer-label" style="font-weight: bold; margin-right: 1%;"
+        >To Account Type</label
+      >
+      <label class="radio-inline transfer-label" style="margin-left:26px;"
+        ><input
+          type="radio"
+          name="transactionType"
+          value="Primary"
+        />Primary</label
+      >
+      <label class="radio-inline transfer-label" style="padding-left: 60px;"
+        ><input
+          type="radio"
+          name="transactionType"
+          value="Savings"
+        />Savings</label
+      >
+    </div>
+      <div>
+        <label
+          class="transfer-label"
+          style="font-weight: bold; margin-right: 74px; padding-bottom: 4%;"
+          for=""
+          >To Username
+        </label>
+        <input
+          class="transfer-label"
+          type="text"
+          placeholder="Enter username"
+        />
+      </div>
+      <div>
+        <label
+          class="transfer-label"
+          style="font-weight: bold; margin-right: 63px; padding-bottom: 4%;"
+          for=""
+          >Enter Amount
+        </label>
+        <input
+          class="transfer-label"
+          type="text"
+          (keypress)="numberOnly($event)"
+          placeholder="₹ 0.00"
+        />
+      </div>
+      <div style="margin-left: 20%;">
+        <button
+          type="submit"
+          class="button-style button-padding"
+          style="margin-top: 2%;"
+        >
+          Transfer
+        </button>
+      </div>
+    </section>
+  </div>
+  <!-- for other -->
+  <!---------------------------------------------------------------------------------------------------->
   <div id="form-2" [hidden]="!other">
     <section class="transfer-other">
       <div>
@@ -178,16 +268,15 @@
       </div>
     </section>
   </div>
+  <!---------------------------------------------------------------------------------------------------->
 </section>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-3 alert alert-danger text-center error" *ngIf="err">
-      {{ errMsg|titlecase }}
+      {{ errMsg | titlecase }}
     </div>
     <div class="col-sm-3 alert alert-success text-center error" *ngIf="success">
-      {{ errMsg|titlecase }}
+      {{ errMsg | titlecase }}
     </div>
   </div>
-
 </div>
-
