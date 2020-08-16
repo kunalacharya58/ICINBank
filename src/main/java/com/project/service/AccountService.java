@@ -17,5 +17,8 @@ public interface AccountService {
 	
 	PrimaryAccount findPrimaryAccount(long userID);
 	SavingsAccount findSavingsAccount(long userID);
+	
+	void savePrimaryAccount(PrimaryAccount primaryAccount);
+	void saveSavingsAccount(SavingsAccount savingsAccount);
 
 }
