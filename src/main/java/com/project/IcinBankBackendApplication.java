@@ -50,11 +50,8 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 		accServ.withdraw(500, "savings", user.getId());
 		
 		ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
-		ChequeBookRequest cbrSavings = cbrServ.createRequest(user.getId(), "savings");
-		
 		
 		cbrServ.confirmRequest(cbrPrimary.getId());
-		cbrServ.confirmRequest(cbrSavings.getId());
 	}
 
 }
