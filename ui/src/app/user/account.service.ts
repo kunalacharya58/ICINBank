@@ -19,43 +19,43 @@ export class AccountService {
 
   getSavingsTransaction(){
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/transaction/savings/"+userId
+    let url = "https://localhost:8080/transaction/savings/"+userId
     return this.http.get<Observable<any>>(url)
   }
 
   getPrimaryTransaction(){
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/transaction/primary/"+userId
+    let url = "https://localhost:8080/transaction/primary/"+userId
     return this.http.get<Observable<any>>(url)
   }
 
   getPrimaryBalance(): any{
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/account/primary/"+userId
+    let url = "https://localhost:8080/account/primary/"+userId
     return this.http.get<any>(url)
   }
 
   getSavingsBalance() {
     let userId = sessionStorage.getItem('userId')
-    let url = "http://localhost:8080/account/savings/"+userId
+    let url = "https://localhost:8080/account/savings/"+userId
     return this.http.get<any>(url)
   }
 
   sendSelf(data) {
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/account/exchange"
+    let url = "https://localhost:8080/account/exchange"
     return this.http.post(url,data,this.httpOptions)
   }
 
   sendSame(data){
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/transfer/"
+    let url = "https://localhost:8080/transfer/"
     return this.http.post(url,data,this.httpOptions)
   }
 
   sendOther(data){
     data = JSON.stringify(data)
-    let url = "http://localhost:8080/transfer/"
+    let url = "https://localhost:8080/transfer/"
     return this.http.post(url,data,this.httpOptions)
   }
 

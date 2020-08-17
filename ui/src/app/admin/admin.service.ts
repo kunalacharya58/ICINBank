@@ -17,28 +17,28 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
   getAllUsers(){
-    let url = 'http://localhost:8080/user/all'
+    let url = 'https://localhost:8080/user/all'
     return this.http.get<Observable<any>>(url)
   }
 
   getCheckBookRequests(){
-    let url = 'http://localhost:8080/chequebookrequest/all'
+    let url = 'https://localhost:8080/chequebookrequest/all'
     return this.http.get<Observable<any>>(url)
   }
 
   getPrimaryAccount(id: number) {
-    let url = "http://localhost:8080/account/primary/"+id
+    let url = "https://localhost:8080/account/primary/"+id
     return this.http.get<any>(url)
   }
 
   getSavingsAccount(id: number) {
-    let url = "http://localhost:8080/account/savings/"+id
+    let url = "https://localhost:8080/account/savings/"+id
     return this.http.get<any>(url)
   }
 
   login(data){
     data = JSON.stringify(data)
-    let url = 'http://localhost:8080/admin/login'
+    let url = 'https://localhost:8080/admin/login'
     return this.http.post(url,data,this.httpOptions)
   }
 
@@ -47,16 +47,16 @@ export class AdminService {
   }
 
   confirmRequest(id :number){
-    let url = 'http://localhost:8080/chequebookrequest/confirm/'+id
+    let url = 'https://localhost:8080/chequebookrequest/confirm/'+id
     return this.http.post(url,null,this.httpOptions)
   }
 
   enableUser( id : number ) {
-    let url = 'http://localhost:8080/user/enable/'+id
+    let url = 'https://localhost:8080/user/enable/'+id
     return this.http.post(url,null,this.httpOptions)
   }
   disableUser( id : number ) {
-    let url = 'http://localhost:8080/user/disable/'+id
+    let url = 'https://localhost:8080/user/disable/'+id
     return this.http.post(url,null,this.httpOptions)
   }
 
