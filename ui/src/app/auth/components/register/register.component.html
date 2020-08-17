@@ -51,7 +51,12 @@
             </div>
 
             <div class="form-group">
-                <input type="date" formControlName="dob" id="dob" class="form-input" placeholder="Date Of Birth" required>
+                <input type="date" formControlName="dob" id="dob" class="form-input" placeholder="Date Of Birth" (input)= "validateDOB()" required>
+                <div *ngFor="let error of validationErrorMessage.dob">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">

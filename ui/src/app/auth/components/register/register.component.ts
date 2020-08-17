@@ -22,6 +22,9 @@ export class RegisterComponent implements OnInit {
       { name: "length", message: "must contain 10 digits", isError: false },
       { name: "isNum", message: "must contain only numerical values", isError: false }
     ],
+    dob : [
+      {name: "minAge", message: "should be atleast 18 years of age", isError: false}
+    ],
     password: [
       { name: "length", message: "must contain atleast 6 characters", isError: false },
       { name: "haveNum", message: "must contain atleast one number", isError: false },
@@ -131,6 +134,12 @@ export class RegisterComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  validateDOB(){
+    var age = new Date().getTime()- new Date(this.form.get('dob').value).valueOf()
+    age = age/(1000 * 3600 * 24 * 365.25)
+    this.validationErrorMessage.dob[0].isError = (age < 18)
   }
 
   validatePassword() {
