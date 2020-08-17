@@ -5,6 +5,6 @@ import com.project.model.User;
 
 public interface LoginService {
 	
-	public User authenticate(Login cred);
+	public User login(Login cred);
 
 }
