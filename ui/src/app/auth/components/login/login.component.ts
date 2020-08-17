@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       (err: HttpErrorResponse) => {
         this.errorMsg = err.headers.get('message');
         this.error = true;
-        if(err.status === 401){
+        if(err.headers.get('message') === "invalid password"){
           if(this.attempts<3)
             this.errorMsg += " : " + (2-this.attempts)+ " attempts left"
           this.attempts += 1
