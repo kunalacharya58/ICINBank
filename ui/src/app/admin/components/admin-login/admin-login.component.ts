@@ -70,7 +70,7 @@ export class AdminLoginComponent implements OnInit {
       (resp) => {
         if (resp.ok) {
           sessionStorage.setItem('adminId', resp.headers.get('adminID'));
-          this.router.navigate(['user']);
+          this.router.navigate(['home']);
         }
       },
       (err: HttpErrorResponse) => {

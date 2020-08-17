@@ -14,47 +14,50 @@ import com.project.service.AccountService;
 import com.project.service.AdminService;
 import com.project.service.ChequeBookRequestService;
 import com.project.service.RegisterService;
-//implements CommandLineRunner
+import com.project.service.UserService;
+
 @SpringBootApplication
-public class IcinBankBackendApplication  {
+public class IcinBankBackendApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(IcinBankBackendApplication.class, args);
 	}
-}	
-//	@Autowired
-//	RegisterService regServ;
-//	
-//	@Autowired
-//	ChequeBookRequestService cbrServ;
-//	
-//	@Autowired
-//	AccountService accServ;
-//	
-//	@Autowired
-//	AdminService adminServ;
+	
+	@Autowired
+	RegisterService regServ;
+	
+	@Autowired
+	ChequeBookRequestService cbrServ;
+	
+	@Autowired
+	AccountService accServ;
+	
+	@Autowired
+	UserService userServ;
+	
+	@Autowired
+	AdminService adminServ;
 
-	// @Override
-	// public void run(String... args) throws Exception {
-	// 	LocalDate date = LocalDate.now();
-	// 	User user = new User("John", "Doe", "0987654321", "johndoe@gmail.com", "johndoe", "secretpass", date, "street");
-	// 	Admin admin = new Admin("adminUsername", "adminPassword");
+	@Override
+	public void run(String... args) throws Exception {
+		LocalDate date = LocalDate.now();
+		User user = new User("John", "Doe", "0987654321", "johndoe@gmail.com", "johndoe", "secretpass", date, "street");
+		Admin admin = new Admin("adminUsername", "adminPassword");
 		
-	// 	adminServ.createAdmin(admin);
-	// 	regServ.createUser(user);
+		adminServ.createAdmin(admin);
+		regServ.createUser(user);
+		userServ.enableUser(user.getId());
 		
-	// 	accServ.deposit(2500, "primary", user.getId());
-	// 	accServ.deposit(3000, "savings", user.getId());
+		accServ.deposit(2500, "primary", user.getId());
+		accServ.deposit(3000, "savings", user.getId());
 		
-	// 	accServ.withdraw(300, "primary", user.getId());
-	// 	accServ.withdraw(500, "savings", user.getId());
+		accServ.withdraw(300, "primary", user.getId());
+		accServ.withdraw(500, "savings", user.getId());
 		
-	// 	ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
-	// 	ChequeBookRequest cbrSavings = cbrServ.createRequest(user.getId(), "savings");
+		ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
+		cbrServ.createRequest(user.getId(), "savings");
 		
-		
-	// 	cbrServ.confirmRequest(cbrPrimary.getId());
-	// 	cbrServ.confirmRequest(cbrSavings.getId());
-	// }
+		cbrServ.confirmRequest(cbrPrimary.getId());
+	}
 
-
+}

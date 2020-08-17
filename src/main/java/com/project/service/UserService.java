@@ -4,6 +4,7 @@ import com.project.model.User;
 
 public interface UserService {
 	
+	public User saveUser(User user);
 	public User updateUser(User user);
 	public void deleteUserbyId(long id);
 	
