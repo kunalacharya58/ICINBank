@@ -8,11 +8,17 @@ import { AdminService } from '../../admin.service'
 export class AdminHomeComponent implements OnInit {
 
   users = []
+  enabledUser = []
+  disabledUser = []
+  displayUser = []
 
+  enabled = true
+  disabled = true
   constructor(private adserve:AdminService) { }
 
   ngOnInit(): void {
     this.getAll()
+    this.filterUser()
   }
 
 
@@ -21,6 +27,10 @@ export class AdminHomeComponent implements OnInit {
       (resp) => {
         resp.forEach((u)=>{
         this.users.push(u);
+        if(u.enabled)
+          this.enabledUser.push(u)
+        else
+          this.disabledUser.push(u)
       })},
       (err) => {console.log(err)}
     )
@@ -41,4 +51,20 @@ export class AdminHomeComponent implements OnInit {
       )
    user.enabled = !user.enabled
   }
+  filterUser(){
+    if(this.enabled && this.disabled){
+      this.displayUser = this.users
+    }
+    else if(this.enabled){
+      this.displayUser = this.enabledUser
+    }
+    else if(this.disabled){
+      this.displayUser = this.disabledUser
+    }
+    else{
+      this.displayUser=[]
+    }
+  }
 }
+
+
