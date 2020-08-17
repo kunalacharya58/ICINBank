@@ -65,4 +65,9 @@ public class UserServiceImpl implements UserService {
 		dao.save(user);
 	}
 
+	@Override
+	public User saveUser(User user) {
+		return dao.save(user);
+	}
+
 }
