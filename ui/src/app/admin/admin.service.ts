@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
 
+  approved = true
+  pending = true
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':'application/json; charset=UTF-8',

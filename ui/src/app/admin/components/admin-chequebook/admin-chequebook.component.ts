@@ -11,11 +11,17 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AdminChequebookComponent implements OnInit {
 
   checkBooks = []
+  approvedCB = []
+  pendingCB = []
+  displayCB =[]
   users = []
+  approved =true
+  pending  = true
   constructor(private adminService: AdminService) { }
 
   ngOnInit(): void {
     this.getData();
+    this.filterCB()
   }
 
   getData(){
@@ -30,6 +36,10 @@ export class AdminChequebookComponent implements OnInit {
           cb.username = this.getUserName(cb.requestedBy)
           this.getAccountNumber(cb)
           this.checkBooks.push(cb);
+          if(cb.confirmed)
+            this.approvedCB.push(cb)
+          else
+            this.pendingCB.push(cb)
       })},
       (err) => {console.log(err)}
     )
@@ -73,6 +83,20 @@ export class AdminChequebookComponent implements OnInit {
     }
   }
 
+  filterCB(){   
+    if(this.approved && this.pending){
+      this.displayCB = this.checkBooks
+    }
+    else if(this.approved){
+      this.displayCB = this.approvedCB
+    }
+    else if(this.pending){
+      this.displayCB = this.pendingCB
+    }
+    else{
+      this.displayCB=[]
+    }
+  }
 
   approveCB(id : number){
     this.adminService.confirmRequest(id).subscribe(

@@ -13,6 +13,7 @@ import { AdminChequebookComponent } from './admin/components/admin-chequebook/ad
 import { PrivacyComponent } from './shared/component/privacy/privacy.component';
 import { SecurityComponent } from './shared/component/security/security.component';
 import { BankRegulationComponent } from './shared/component/bank-regulation/bank-regulation.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { BankRegulationComponent } from './shared/component/bank-regulation/bank
     HttpClientModule,
     UserModule,
     AdminModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
