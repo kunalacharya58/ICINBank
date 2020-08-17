@@ -45,9 +45,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'admin',
-    component: AdminBaseComponent,
-    children: [
+    path: 'admin',component: AdminBaseComponent,children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: AdminHomeComponent },
       { path: 'chequebookrequest', component: AdminChequebookComponent},
