@@ -1,9 +1,10 @@
 .heading-main{
-  text-align: center;
+  
   font-family: "montserrat";
-  margin-top: 5%;
+  font-size: x-large;
+  padding: 20px 0px 20px 400px;
+ 
 }
-
 
 .table-style{
   font-family: "montserrat";
