@@ -14,6 +14,7 @@ import com.project.service.AccountService;
 import com.project.service.AdminService;
 import com.project.service.ChequeBookRequestService;
 import com.project.service.RegisterService;
+import com.project.service.UserService;
 
 @SpringBootApplication
 public class IcinBankBackendApplication implements CommandLineRunner {
@@ -32,6 +33,9 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 	AccountService accServ;
 	
 	@Autowired
+	UserService userServ;
+	
+	@Autowired
 	AdminService adminServ;
 
 	@Override
@@ -42,6 +46,7 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 		
 		adminServ.createAdmin(admin);
 		regServ.createUser(user);
+		userServ.enableUser(user.getId());
 		
 		accServ.deposit(2500, "primary", user.getId());
 		accServ.deposit(3000, "savings", user.getId());
@@ -50,6 +55,7 @@ public class IcinBankBackendApplication implements CommandLineRunner {
 		accServ.withdraw(500, "savings", user.getId());
 		
 		ChequeBookRequest cbrPrimary = cbrServ.createRequest(user.getId(), "primary");
+		cbrServ.createRequest(user.getId(), "savings");
 		
 		cbrServ.confirmRequest(cbrPrimary.getId());
 	}
