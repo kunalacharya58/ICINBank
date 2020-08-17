@@ -17,13 +17,13 @@ export class AuthService {
 
 
   login(data:any){
-    let url = 'http://localhost:8080/login'
+    let url = 'https://localhost:8080/login'
     data = JSON.stringify(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
 
   register(data:any){
-    let url = 'http://localhost:8080/register'
+    let url = 'https://localhost:8080/register'
     data = JSON.stringify(data)
     return this.http.post<HttpResponse<any>>(url,data,this.httpOptions)
   }
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   disableUser( username : string ) {
-    let url = 'http://localhost:8080/user/disable/username/'+username
+    let url = 'https://localhost:8080/user/disable/username/'+username
     return this.http.post(url,null,this.httpOptions)
   }
 }
