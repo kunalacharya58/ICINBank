@@ -140,6 +140,7 @@ export class RegisterComponent implements OnInit {
     var age = new Date().getTime()- new Date(this.form.get('dob').value).valueOf()
     age = age/(1000 * 3600 * 24 * 365.25)
     this.validationErrorMessage.dob[0].isError = (age < 18)
+    return !this.validationErrorMessage.dob[0].isError
   }
 
   validatePassword() {
@@ -174,6 +175,8 @@ export class RegisterComponent implements OnInit {
       document.getElementById("phone").focus();
     else if (!this.validatePassword())
       document.getElementById("password").focus();
+    else if(!this.validateDOB())
+      document.getElementById("dob").focus()
     else if (!this.validateConfirmPassword())
       document.getElementById("confPass").focus();
     else
