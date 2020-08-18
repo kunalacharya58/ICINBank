@@ -1,0 +1,59 @@
+
+        <div class="row h-100">
+            <div class="col-sm-9">
+
+
+
+                      <!-- <div class="navbar-header">
+                        <img src="../../../../assets/css/images/croppedlogo.png" alt="logo" class="logo">
+                      </div> -->
+
+                      <ul class="navbar">
+
+
+                      <ul class="navbar">
+                        <li><a routerLink='home' routerLinkActive='active' style="padding-left: 120px;"><img src="../../../../assets/css/images/croppedlogo.png" alt="logo" class="logo"></a></li>
+                        <li><a routerLink='home' routerLinkActive='active' style="padding-left: 120px;">Home</a></li>
+                        <li><a routerLink='transaction' routerLinkActive='active'>Account Transactions</a></li>
+                        <li><a routerLink='chequebook' routerLinkActive='active'>Request For Cheque Book</a></li>
+                        <li><a routerLink='transfer' routerLinkActive='active'>Transfer</a></li>
+                        <li><a routerLink='profile' routerLinkActive='active'>Profile Settings</a></li>
+                        <li id="logout"><a (click)="logout()" routerLinkActive='active'><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+                      </ul>
+
+
+
+                      <!-- <ul class="navbar navbar-nav navbar-right">
+                        <li><a (click)="logout()" routerLinkActive='active'><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+
+                      </ul> -->
+                      </ul>
+
+
+
+                  <hr>
+                  <router-outlet></router-outlet>
+
+
+
+
+                <footer class="section-padding footer-font footer" style="margin-top: 5%;">
+                    <div style="margin-bottom: 2%;">
+                        Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
+                        © 2020 ICIN. All rights reserved.
+                    </div>
+
+                    <a routerLink="security" routerLinkActive="active" class="link-style">Security</a>
+                    <a routerLink="privacy" routerLinkActive="active" class="link-style">Privacy and Cookies</a>
+                    <a routerLink="bank-regulatory" routerLinkActive="active" routerLinkActive="active" class="link-style">Bank Regulatory Information</a>
+                </footer>
+
+            </div>
+
+            <div class="col-sm-3">
+                <div class="new-bg">
+                  <img class="bg-image w-100" src="../../../../assets/css/images/loginBg2.jpg" >
+                </div>
+            </div>
+        </div>
+

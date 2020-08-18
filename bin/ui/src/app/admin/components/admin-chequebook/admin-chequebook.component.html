@@ -1,0 +1,53 @@
+<div class="container">
+<section>
+  <h3 class="heading-main">Pending Cheque Book Request</h3>
+  <div class="heading-main">
+    <label class="transfer-label" 
+      >Filter Requests</label
+    >
+    <label class="radio-inline transfer-label"
+      ><input type="checkbox" [(ngModel)]="approved" (change)="filterCB()"/>Approved</label
+    >
+    <label class="radio-inline transfer-label" style="padding-left: 60px;"
+      ><input type="checkbox" [(ngModel)]="pending" (change)="filterCB()"/>Pending</label
+    >
+  </div>
+  <div class="table-responsive  section-padding">
+      <table class="table table-hover table-style text-center">
+        <thead>
+          <tr style="font-size: 20px; color:#212121; font-weight: bold;">
+            <th>Username</th>
+            <th>Account Type</th>
+            <th>Account Number</th>
+            <th>Request Date</th>
+            <th>Approval Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-body-style">
+          <tr *ngFor="let cb of displayCB;" >
+            <td>
+              {{cb.username}}
+            </td>
+            <td>
+              {{cb.accountType}}
+            </td>
+            <td>
+              {{cb.accountNumber}}
+            </td>
+            <td>
+              {{cb.requestDate | date}}
+            </td>
+            <td>
+              {{cb.confirmed}}
+            </td>
+            <td>
+              <a href="javascript:void(0)" *ngIf = "!cb.confirmed" (click)= "approveCB(cb.id);" >Approve</a>
+              <div *ngIf = "cb.confirmed" style="color:green;">Approved</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+</section>
+</div>

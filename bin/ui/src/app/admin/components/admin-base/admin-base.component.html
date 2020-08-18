@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-sm-9">
+
+
+      <ul class="navbar">
+        <li style="justify-content: flex-start;"><a routerLink='home'><img src="../../../../assets/css/images/croppedlogo.png" alt="logo" class="logo"></a></li>
+        <li style="justify-content: flex-start; margin-top: 2%;"><a routerLink='home'>Home</a></li>
+        <li style="justify-content: flex-start; margin-top: 2%;"><a routerLink='chequebookrequest'>Cheque Book Requests</a></li>
+        <li style="justify-content: flex-end; margin-top: 2%;"><a (click)="logout()"><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+      </ul>
+
+
+      <!-- <ul class="navbar navbar-nav navbar-right">
+        <li><a (click)="logout()" routerLinkActive='active'><span class="glyphicon glyphicon-log-out" style="margin-right: 5px;"></span>Logout</a></li>
+
+      </ul> -->
+        <hr>
+
+     <router-outlet></router-outlet>
+
+      <footer class="section-padding footer-font" style="margin-top: 20%;">
+          <div style="margin-bottom: 2%;">
+              Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
+              © 2020 ICIN. All rights reserved.
+          </div>
+
+          <a routerLink="security" routerLinkActive="active" class="link-style">Security</a>
+          <a routerLink="privacy" routerLinkActive="active" class="link-style">Privacy and Cookies</a>
+          <a routerLink="bank-regulatory" routerLinkActive="active" routerLinkActive="active" class="link-style">Bank Regulatory Information</a>
+      </footer>
+
+  </div>
+
+  <div class="col-sm-3">
+      <div class="new-bg">
+        <img class="bg-image w-100" src="../../../../assets/css/images/loginBg2.jpg" >
+      </div>
+  </div>
+</div>

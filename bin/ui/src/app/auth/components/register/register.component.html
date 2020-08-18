@@ -1,0 +1,112 @@
+<div class="container-fluid">
+<head>
+    <title>Register</title>
+</head>
+
+<body >
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <img src="../../../../assets/css/images/croppedlogo.png" alt="logo" class="logo">
+            <header >
+                <h1 class="heading-main">Register</h1>
+            </header>
+
+    <section class="section-padding">
+        <form [formGroup]="form" action="POST" (ngSubmit)="validateFormAndSubmit()" ngNativeValidate>
+            <div class="form-group">
+                <input type="text" formControlName="username" id="username" class="form-input" placeholder="User ID" (input)="validateUserName()" required>
+                <div *ngFor="let error of validationErrorMessage.username">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="text" formControlName="firstName" id="firstName" class="form-input" placeholder="First Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" formControlName="lastName" id="lastName" class="form-input" placeholder="Last Name" required>
+            </div>
+
+            <div class="form-group">
+                <input type="email" formControlName="email" id="email" class="form-input" placeholder="Email Address" (input)= "validateEmail()" required>
+                <div *ngFor="let error of validationErrorMessage.email">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" formControlName="phone" id="phone" class="form-input" placeholder="Contact Number" (keypress)= "numberOnly($event)" (input)= "validatePhone()"  required>
+                <div *ngFor="let error of validationErrorMessage.phone">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="date" formControlName="dob" id="dob" class="form-input" placeholder="Date Of Birth" (input)= "validateDOB()" required>
+                <div *ngFor="let error of validationErrorMessage.dob">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="text" formControlName="address" id="address" class="form-input" placeholder="Address" required>
+            </div>
+
+            <div class="form-group">
+                <input type="password" formControlName="password" id="password" class="form-input" placeholder="Password" (input)= "validatePassword()" required>
+                <div *ngFor="let error of validationErrorMessage.password">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="password" formControlName="confPass" id="confPass" class="form-input" placeholder="Confirm Password" (input)= "validateConfirmPassword()" required>
+                <div *ngFor="let error of validationErrorMessage.confPass">
+                    <div class="alert alert-danger error text-center" *ngIf="error.isError">
+                        {{error.message}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-padding">
+                <button type="submit" class="button-style" id="register" style="padding-left: 30px;padding-right: 20px;">Register</button>
+                <a [routerLink]="['/login']" style="margin: 15% 0% 0% 57%; color: #6b6b6b; font-family: Libre Baskerville; font-size:18px">Have An Account?</a>
+            </div>
+
+        </form>
+        <div *ngIf="error" class="alert alert-danger error text-center">
+          {{ errorMsg|titlecase }}
+        </div>
+    </section>
+
+    <footer class="section-padding footer-font">
+        <div style="margin-top: 5%;">
+            Banking services are offered by ICIN Bank. ICIN Bank is a Maharashtra chartered bank, a member of the Reserve Bank of India and a Member RBI.
+            © 2020 ICIN. All rights reserved.
+        </div>
+
+    </footer>
+
+    </div>
+    <div class="col-sm-6">
+        <div class="bg">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</div>

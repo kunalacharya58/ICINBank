@@ -29,6 +29,17 @@
   color: #bfbfbf;
 }
 
+.column2 {
+  float: left;
+  width: 40%;
+  padding: 5%;
+  margin: 0% 1% 0% 7%;
+  font-family: "montserrat";
+  font-weight: bold;
+  color: #212121;
+  background-color: #bfbfbf;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -151,7 +162,6 @@
 
 .home-opt{
   font-size: 25px;
-  background-color: #212121;
   text-align: center;
 }
 
