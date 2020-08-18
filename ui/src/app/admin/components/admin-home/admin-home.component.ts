@@ -18,11 +18,14 @@ export class AdminHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll()
-    this.filterUser()
+    this.displayUser = this.users
   }
 
 
   getAll(){
+    this.users =[]
+    this.enabledUser = []
+    this.disabledUser = []
     this.adserve.getAllUsers().subscribe(
       (resp) => {
         resp.forEach((u)=>{
@@ -52,6 +55,7 @@ export class AdminHomeComponent implements OnInit {
    user.enabled = !user.enabled
   }
   filterUser(){
+    this.getAll()
     if(this.enabled && this.disabled){
       this.displayUser = this.users
     }

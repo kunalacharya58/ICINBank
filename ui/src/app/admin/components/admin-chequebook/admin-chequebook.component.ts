@@ -21,7 +21,7 @@ export class AdminChequebookComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData();
-    this.filterCB()
+    this.displayCB = this.checkBooks
   }
 
   getData(){
@@ -30,6 +30,9 @@ export class AdminChequebookComponent implements OnInit {
   }
 
   getCB(){
+    this.checkBooks = []
+    this.approvedCB = []
+    this.pendingCB = []
     this.adminService.getCheckBookRequests().subscribe(
       (resp) => {
         resp.forEach((cb)=>{
@@ -84,6 +87,7 @@ export class AdminChequebookComponent implements OnInit {
   }
 
   filterCB(){   
+    this.getCB()
     if(this.approved && this.pending){
       this.displayCB = this.checkBooks
     }
